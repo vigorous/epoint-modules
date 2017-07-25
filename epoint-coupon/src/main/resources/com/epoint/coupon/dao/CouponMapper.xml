@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.coupon.dao.CouponMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.coupon.entity.Coupon">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="publish_num" jdbcType="INTEGER" property="publishNum" />
+    <result column="coupon_money" jdbcType="DOUBLE" property="couponMoney" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="reg_auto_send" jdbcType="SMALLINT" property="regAutoSend" />
+    <result column="share_num" jdbcType="INTEGER" property="shareNum" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="receive_num" jdbcType="INTEGER" property="receiveNum" />
+    <result column="use_num" jdbcType="INTEGER" property="useNum" />
+    <result column="order_money" jdbcType="DOUBLE" property="orderMoney" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, type,item_id, publish_num, coupon_money, content, reg_auto_send, share_num, store_id,
+    status, start_time, end_time, receive_num, use_num, order_money, create_time, update_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_coupon
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.epoint.coupon.entity.Coupon" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    insert into erp_coupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="publishNum != null">
+        publish_num,
+      </if>
+      <if test="couponMoney != null">
+        coupon_money,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="regAutoSend != null">
+        reg_auto_send,
+      </if>
+      <if test="shareNum != null">
+        share_num,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="receiveNum != null">
+        receive_num,
+      </if>
+      <if test="useNum != null">
+        use_num,
+      </if>
+      <if test="orderMoney != null">
+        order_money,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+
+      <if test="type != null">
+        #{type,jdbcType=SMALLINT},
+      </if>
+        <if test="itemId != null">
+            #{itemId},
+        </if>
+      <if test="publishNum != null">
+        #{publishNum,jdbcType=INTEGER},
+      </if>
+      <if test="couponMoney != null">
+        #{couponMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="regAutoSend != null">
+        #{regAutoSend,jdbcType=SMALLINT},
+      </if>
+      <if test="shareNum != null">
+        #{shareNum,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveNum != null">
+        #{receiveNum,jdbcType=INTEGER},
+      </if>
+      <if test="useNum != null">
+        #{useNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderMoney != null">
+        #{orderMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.coupon.entity.Coupon">
+    update erp_coupon
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId},
+      </if>
+      <if test="publishNum != null">
+        publish_num = #{publishNum,jdbcType=INTEGER},
+      </if>
+      <if test="couponMoney != null">
+        coupon_money = #{couponMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="regAutoSend != null">
+        reg_auto_send = #{regAutoSend,jdbcType=SMALLINT},
+      </if>
+      <if test="shareNum != null">
+        share_num = #{shareNum,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receiveNum != null">
+        receive_num = #{receiveNum,jdbcType=INTEGER},
+      </if>
+      <if test="useNum != null">
+        use_num = #{useNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderMoney != null">
+        order_money = #{orderMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+    <update id="updateUseNumAndOrderAmt" parameterType="com.epoint.coupon.entity.Coupon">
+        update erp_coupon SET
+            <if test="useNum != null">
+                use_num =  use_num + #{useNum,jdbcType=INTEGER},
+            </if>
+            <if test="orderMoney != null">
+                order_money = order_money + #{orderMoney,jdbcType=DOUBLE},
+            </if>
+            update_time = now()
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateReceiveNum">
+        update erp_coupon SET
+            <if test="increment != null">
+                  receive_num = receive_num + #{increment,jdbcType=INTEGER},
+            </if>
+            update_time = now()
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+  <select id="selectCoupon" parameterType="com.epoint.coupon.entity.Coupon" resultMap="BaseResultMap">
+    select
+    a.id,
+    a.name,
+    a.type,
+    a.item_id,
+    a.publish_num,
+    a.coupon_money,
+    a.content,
+    a.reg_auto_send,
+    a.share_num,
+    a.store_id,
+    a.status,
+    a.start_time,
+    a.end_time,
+    a.receive_num,
+    a.use_num,
+    a.order_money,
+    a.create_time,
+    a.update_time
+    from erp_coupon a INNER JOIN erp_coupon_store b ON a.id = b.coupon_id
+    where
+         b.apply_store_id = #{storeId,jdbcType=BIGINT}
+  </select>
+
+  <!-- 分页查询赠券 -->
+  <select id="queryListByPage" parameterType="map" resultType="com.epoint.coupon.dto.CouponDTO">
+    select
+      b.id,
+      b.name,
+      b.type,
+      b.item_id,
+      b.publish_num publishNum,
+      b.coupon_money couponMoney,
+      b.content,
+      b.reg_auto_send regAutoSend,
+      b.share_num shareNum,
+      b.store_id storeId,
+      a.coupon_status status,
+      b.start_time startTime,
+      b.end_time endTime,
+      a.receive_num receiveNum,
+      a.use_num useNum,
+      a.order_money orderMoney,
+      b.create_time createTime,
+      b.update_time updateTime
+    from erp_coupon_store a
+    left join erp_coupon b on a.coupon_id = b.id
+    <where>
+      <if test="couponId != null and couponId != ''">
+        and a.coupon_id = #{couponId,jdbcType=BIGINT}
+      </if>
+      <if test="storeId != null and storeId != ''">
+        and a.apply_store_id = #{storeId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null and status != ''">
+        and a.coupon_status = #{status,jdbcType=SMALLINT}
+      </if>
+        <if test="type != null">
+            and b.type = #{type}
+        </if>
+        <if test="name != null and name != ''">
+        and b.name like #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="endTime != null and endTime != ''">
+        <![CDATA[ and b.end_time < #{endTime} ]]>
+      </if>
+      <if test="currTime != null and currTime != ''">
+        <![CDATA[ and (b.end_time >= #{currTime} or b.end_time is null)]]>
+      </if>
+    </where>
+    order by a.update_time desc,a.coupon_status
+    <if test="pageNum != null and pageSize != null">
+      limit  #{pageNum},#{pageSize}
+    </if>
+  </select>
+
+  <!-- 查询赠券的数量 -->
+  <select id="queryNumByPage" parameterType="map" resultType="Integer">
+    select count(*)
+    from erp_coupon_store a
+    left join erp_coupon b on a.coupon_id = b.id
+    <where>
+      <if test="couponId != null and couponId != ''">
+        and a.coupon_id = #{couponId,jdbcType=BIGINT}
+      </if>
+      <if test="storeId != null and storeId != ''">
+        and a.apply_store_id = #{storeId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null and status != ''">
+        and a.coupon_status = #{status,jdbcType=SMALLINT}
+      </if>
+        <if test="type != null">
+            and b.type = #{type}
+        </if>
+      <if test="name != null and name != ''">
+        and b.name like #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="endTime != null and endTime != ''">
+        <![CDATA[ and b.end_time < #{endTime} ]]>
+      </if>
+      <if test="currTime != null and currTime != ''">
+        <![CDATA[ and (b.end_time >= #{currTime} or b.end_time is null)]]>
+      </if>
+    </where>
+  </select>
+  
+  <select id="selectRegAutoNum" resultType="java.lang.Integer">
+    select count(*)
+    from erp_coupon_store a
+    left join erp_coupon b on a.coupon_id = b.id
+    where a.apply_store_id = #{storeId}
+      and b.reg_auto_send = 1
+      and a.coupon_status = 0
+      <![CDATA[ and (b.end_time is null or to_days(b.end_time) >= to_days(now())) ]]>
+  </select>
+
+    <!-- 分页查询赠券数据统计 -->
+  <select id="queryStatisticsListByPage" parameterType="map" resultType="com.epoint.coupon.dto.CouponDTO">
+    select
+      b.id,
+      b.name,
+      b.type,
+      b.item_id,
+      b.publish_num publishNum,
+      b.coupon_money couponMoney,
+      b.content,
+      b.reg_auto_send regAutoSend,
+      b.share_num shareNum,
+      b.store_id storeId,
+      a.coupon_status status,
+      b.start_time startTime,
+      b.end_time endTime,
+      a.receive_num receiveNum,
+      a.use_num useNum,
+      a.order_money orderMoney,
+      b.create_time createTime,
+      b.update_time updateTime
+    from erp_coupon_store a
+    left join erp_coupon b on a.coupon_id = b.id
+    <where>
+      <if test="couponId != null and couponId != ''">
+        and a.coupon_id = #{couponId,jdbcType=BIGINT}
+      </if>
+      <if test="storeId != null and storeId != ''">
+        and a.apply_store_id = #{storeId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null and status != ''">
+        and a.coupon_status = #{status,jdbcType=SMALLINT}
+      </if>
+      <if test="name != null and name != ''">
+        and b.name like #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="endTime != null and endTime != ''">
+        <![CDATA[ and b.end_time < #{endTime} ]]>
+      </if>
+      <if test="currTime != null and currTime != ''">
+        <![CDATA[ and (b.end_time >= #{currTime} or b.end_time is null)]]>
+      </if>
+    </where>
+    order by a.update_time desc,a.coupon_status asc
+    <if test="pageNum != null and pageSize != null">
+      limit  #{pageNum},#{pageSize}
+    </if>
+  </select>
+
+  <!-- 查询赠券数据统计的数量 -->
+  <select id="queryStatisticsNumByPage" parameterType="map" resultType="Integer">
+    select count(*)
+    from erp_coupon_store a
+    left join erp_coupon b on a.coupon_id = b.id
+    <where>
+      <if test="couponId != null and couponId != ''">
+        and a.coupon_id = #{couponId,jdbcType=BIGINT}
+      </if>
+      <if test="storeId != null and storeId != ''">
+        and a.apply_store_id = #{storeId,jdbcType=BIGINT}
+      </if>
+      <if test="status != null and status != ''">
+        and a.coupon_status = #{status,jdbcType=SMALLINT}
+      </if>
+      <if test="name != null and name != ''">
+        and b.name like #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="endTime != null and endTime != ''">
+        <![CDATA[ and b.end_time < #{endTime} ]]>
+      </if>
+      <if test="currTime != null and currTime != ''">
+        <![CDATA[ and (b.end_time >= #{currTime} or b.end_time is null)]]>
+      </if>
+    </where>
+  </select>
+
+</mapper>

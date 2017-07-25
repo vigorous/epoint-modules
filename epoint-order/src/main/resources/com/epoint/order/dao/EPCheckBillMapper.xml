@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPCheckBillMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.CheckBill">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="bill_no" jdbcType="VARCHAR" property="billNo" />
+    <result column="total_money" jdbcType="DOUBLE" property="totalMoney" />
+    <result column="handle_charge" jdbcType="DOUBLE" property="handleCharge" />
+    <result column="cash_out" jdbcType="DOUBLE" property="cashOut" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="bank_no" jdbcType="VARCHAR" property="bankNo" />
+    <result column="operator_id" jdbcType="BIGINT" property="operatorId" />
+    <result column="operater_time" jdbcType="TIMESTAMP" property="operaterTime" />
+    <result column="serial_num" jdbcType="VARCHAR" property="serialNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, start_time, end_time, bill_no, total_money, handle_charge, cash_out, status, 
+    erp_store_id, create_time, bank_name, account_name, bank_no, operator_id, operater_time, 
+    serial_num
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_check_bill
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_check_bill
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.CheckBill" useGeneratedKeys="true">
+    insert into erp_check_bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="billNo != null">
+        bill_no,
+      </if>
+      <if test="totalMoney != null">
+        total_money,
+      </if>
+      <if test="handleCharge != null">
+        handle_charge,
+      </if>
+      <if test="cashOut != null">
+        cash_out,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="bankName != null">
+        bank_name,
+      </if>
+      <if test="accountName != null">
+        account_name,
+      </if>
+      <if test="bankNo != null">
+        bank_no,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="operaterTime != null">
+        operater_time,
+      </if>
+      <if test="serialNum != null">
+        serial_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billNo != null">
+        #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="totalMoney != null">
+        #{totalMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="handleCharge != null">
+        #{handleCharge,jdbcType=DOUBLE},
+      </if>
+      <if test="cashOut != null">
+        #{cashOut,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankName != null">
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null">
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNo != null">
+        #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operaterTime != null">
+        #{operaterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialNum != null">
+        #{serialNum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.CheckBill">
+    update erp_check_bill
+    <set>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billNo != null">
+        bill_no = #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="totalMoney != null">
+        total_money = #{totalMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="handleCharge != null">
+        handle_charge = #{handleCharge,jdbcType=DOUBLE},
+      </if>
+      <if test="cashOut != null">
+        cash_out = #{cashOut,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null">
+        account_name = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNo != null">
+        bank_no = #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="operaterTime != null">
+        operater_time = #{operaterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="serialNum != null">
+        serial_num = #{serialNum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

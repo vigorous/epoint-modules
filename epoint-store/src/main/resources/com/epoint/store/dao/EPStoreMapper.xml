@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.store.dao.EPStoreMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.store.entity.Store">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="start_time" jdbcType="TIME" property="startTime" />
+    <result column="end_time" jdbcType="TIME" property="endTime" />
+    <result column="linkman" jdbcType="VARCHAR" property="linkman" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="longitude" jdbcType="DECIMAL" property="longitude" />
+    <result column="latitude" jdbcType="DECIMAL" property="latitude" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="erp_store_config_id" jdbcType="BIGINT" property="storeConfigId" />
+    <result column="pno" jdbcType="INTEGER" property="pno" />
+    <result column="cno" jdbcType="INTEGER" property="cno" />
+    <result column="dno" jdbcType="INTEGER" property="dno" />
+    <result column="business_licence_pic" jdbcType="VARCHAR" property="businessLicencePic" />
+    <result column="business_licence" jdbcType="VARCHAR" property="businessLicence" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="closing_date" jdbcType="TIMESTAMP" property="closingDate" />
+    <result column="level" jdbcType="TINYINT" property="level" />
+    <result column="bank_card_number" jdbcType="VARCHAR" property="bankCardNumber" />
+    <result column="area" jdbcType="DOUBLE" property="area" />
+    <result column="reg_channel" jdbcType="CHAR" property="regChannel" />
+    <result column="img_store_logo" jdbcType="VARCHAR" property="imgStoreLogo" />
+    <result column="customer_type" jdbcType="VARCHAR" property="customerType" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="spell_short" jdbcType="VARCHAR" property="spellShort" />
+    <result column="store_no" jdbcType="VARCHAR" property="storeNo" />
+    <result column="subjection" jdbcType="VARCHAR" property="subjection" />
+    <result column="chain_type" jdbcType="INTEGER" property="chainType" />
+    <result column="operator_id" jdbcType="BIGINT" property="operatorId" />
+    <result column="manager_id" jdbcType="BIGINT" property="managerId" />
+    <result column="is_provide_service" jdbcType="SMALLINT" property="isProvideService" />
+    <result column="child_store_amount" jdbcType="INTEGER" property="childStoreAmount" />
+    <result column="ep_mall_customer_id" jdbcType="BIGINT" property="epMallCustomerId" />
+    <result column="ep_mall_store_id" jdbcType="BIGINT" property="epMallStoreId" />
+    <result column="is_bind_ep_mall" jdbcType="INTEGER" property="isBindEpMall" />
+    <result column="bind_time" jdbcType="TIMESTAMP" property="bindTime" />
+    <result column="unbind_time" jdbcType="TIMESTAMP" property="unbindTime" />
+    <result column="ep_mall_buy_auth" jdbcType="SMALLINT" property="epMallBuyAuth" />
+    <result column="ep_mall_sell_auth" jdbcType="SMALLINT" property="epMallSellAuth" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="ep_mall_store_name" jdbcType="VARCHAR" property="epMallStoreName" />
+    <result column="is_import" jdbcType="VARCHAR" property="isImport" />
+    <result column="pid" jdbcType="BIGINT" property="pid" />
+    <result column="init_mobile" jdbcType="VARCHAR" property="initMobile" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, start_time, end_time, linkman, tel, addr, longitude, latitude, remark, 
+    parent_id, create_time, status, erp_store_config_id, pno, cno, dno, business_licence_pic, 
+    business_licence, type, erp_store_id, closing_date, level, bank_card_number, area, 
+    reg_channel, img_store_logo, customer_type, operator, spell_short, store_no, subjection, 
+    chain_type, operator_id, manager_id, is_provide_service, child_store_amount, ep_mall_customer_id, 
+    ep_mall_store_id, is_bind_ep_mall, bind_time, unbind_time, ep_mall_buy_auth, ep_mall_sell_auth, 
+    mobile, introduce, ep_mall_store_name, is_import, pid, init_mobile
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_store
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_store
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.store.entity.Store" useGeneratedKeys="true">
+    insert into erp_store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="linkman != null">
+        linkman,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="storeConfigId != null">
+        erp_store_config_id,
+      </if>
+      <if test="pno != null">
+        pno,
+      </if>
+      <if test="cno != null">
+        cno,
+      </if>
+      <if test="dno != null">
+        dno,
+      </if>
+      <if test="businessLicencePic != null">
+        business_licence_pic,
+      </if>
+      <if test="businessLicence != null">
+        business_licence,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="closingDate != null">
+        closing_date,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="bankCardNumber != null">
+        bank_card_number,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="regChannel != null">
+        reg_channel,
+      </if>
+      <if test="imgStoreLogo != null">
+        img_store_logo,
+      </if>
+      <if test="customerType != null">
+        customer_type,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="spellShort != null">
+        spell_short,
+      </if>
+      <if test="storeNo != null">
+        store_no,
+      </if>
+      <if test="subjection != null">
+        subjection,
+      </if>
+      <if test="chainType != null">
+        chain_type,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="managerId != null">
+        manager_id,
+      </if>
+      <if test="isProvideService != null">
+        is_provide_service,
+      </if>
+      <if test="childStoreAmount != null">
+        child_store_amount,
+      </if>
+      <if test="epMallCustomerId != null">
+        ep_mall_customer_id,
+      </if>
+      <if test="epMallStoreId != null">
+        ep_mall_store_id,
+      </if>
+      <if test="isBindEpMall != null">
+        is_bind_ep_mall,
+      </if>
+      <if test="bindTime != null">
+        bind_time,
+      </if>
+      <if test="unbindTime != null">
+        unbind_time,
+      </if>
+      <if test="epMallBuyAuth != null">
+        ep_mall_buy_auth,
+      </if>
+      <if test="epMallSellAuth != null">
+        ep_mall_sell_auth,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="introduce != null">
+        introduce,
+      </if>
+      <if test="epMallStoreName != null">
+        ep_mall_store_name,
+      </if>
+      <if test="isImport != null">
+        is_import,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="initMobile != null">
+        init_mobile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIME},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIME},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="storeConfigId != null">
+        #{storeConfigId,jdbcType=BIGINT},
+      </if>
+      <if test="pno != null">
+        #{pno,jdbcType=INTEGER},
+      </if>
+      <if test="cno != null">
+        #{cno,jdbcType=INTEGER},
+      </if>
+      <if test="dno != null">
+        #{dno,jdbcType=INTEGER},
+      </if>
+      <if test="businessLicencePic != null">
+        #{businessLicencePic,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence != null">
+        #{businessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="closingDate != null">
+        #{closingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="bankCardNumber != null">
+        #{bankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=DOUBLE},
+      </if>
+      <if test="regChannel != null">
+        #{regChannel,jdbcType=CHAR},
+      </if>
+      <if test="imgStoreLogo != null">
+        #{imgStoreLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerType != null">
+        #{customerType,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="spellShort != null">
+        #{spellShort,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNo != null">
+        #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subjection != null">
+        #{subjection,jdbcType=VARCHAR},
+      </if>
+      <if test="chainType != null">
+        #{chainType,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="managerId != null">
+        #{managerId,jdbcType=BIGINT},
+      </if>
+      <if test="isProvideService != null">
+        #{isProvideService,jdbcType=SMALLINT},
+      </if>
+      <if test="childStoreAmount != null">
+        #{childStoreAmount,jdbcType=INTEGER},
+      </if>
+      <if test="epMallCustomerId != null">
+        #{epMallCustomerId,jdbcType=BIGINT},
+      </if>
+      <if test="epMallStoreId != null">
+        #{epMallStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="isBindEpMall != null">
+        #{isBindEpMall,jdbcType=INTEGER},
+      </if>
+      <if test="bindTime != null">
+        #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unbindTime != null">
+        #{unbindTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="epMallBuyAuth != null">
+        #{epMallBuyAuth,jdbcType=SMALLINT},
+      </if>
+      <if test="epMallSellAuth != null">
+        #{epMallSellAuth,jdbcType=SMALLINT},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="epMallStoreName != null">
+        #{epMallStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="isImport != null">
+        #{isImport,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="initMobile != null">
+        #{initMobile,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.store.entity.Store">
+    update erp_store
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIME},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIME},
+      </if>
+      <if test="linkman != null">
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DECIMAL},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="storeConfigId != null">
+        erp_store_config_id = #{storeConfigId,jdbcType=BIGINT},
+      </if>
+      <if test="pno != null">
+        pno = #{pno,jdbcType=INTEGER},
+      </if>
+      <if test="cno != null">
+        cno = #{cno,jdbcType=INTEGER},
+      </if>
+      <if test="dno != null">
+        dno = #{dno,jdbcType=INTEGER},
+      </if>
+      <if test="businessLicencePic != null">
+        business_licence_pic = #{businessLicencePic,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicence != null">
+        business_licence = #{businessLicence,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="closingDate != null">
+        closing_date = #{closingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="bankCardNumber != null">
+        bank_card_number = #{bankCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=DOUBLE},
+      </if>
+      <if test="regChannel != null">
+        reg_channel = #{regChannel,jdbcType=CHAR},
+      </if>
+      <if test="imgStoreLogo != null">
+        img_store_logo = #{imgStoreLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerType != null">
+        customer_type = #{customerType,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="spellShort != null">
+        spell_short = #{spellShort,jdbcType=VARCHAR},
+      </if>
+      <if test="storeNo != null">
+        store_no = #{storeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subjection != null">
+        subjection = #{subjection,jdbcType=VARCHAR},
+      </if>
+      <if test="chainType != null">
+        chain_type = #{chainType,jdbcType=INTEGER},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=BIGINT},
+      </if>
+      <if test="managerId != null">
+        manager_id = #{managerId,jdbcType=BIGINT},
+      </if>
+      <if test="isProvideService != null">
+        is_provide_service = #{isProvideService,jdbcType=SMALLINT},
+      </if>
+      <if test="childStoreAmount != null">
+        child_store_amount = #{childStoreAmount,jdbcType=INTEGER},
+      </if>
+      <if test="epMallCustomerId != null">
+        ep_mall_customer_id = #{epMallCustomerId,jdbcType=BIGINT},
+      </if>
+      <if test="epMallStoreId != null">
+        ep_mall_store_id = #{epMallStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="isBindEpMall != null">
+        is_bind_ep_mall = #{isBindEpMall,jdbcType=INTEGER},
+      </if>
+      <if test="bindTime != null">
+        bind_time = #{bindTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unbindTime != null">
+        unbind_time = #{unbindTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="epMallBuyAuth != null">
+        ep_mall_buy_auth = #{epMallBuyAuth,jdbcType=SMALLINT},
+      </if>
+      <if test="epMallSellAuth != null">
+        ep_mall_sell_auth = #{epMallSellAuth,jdbcType=SMALLINT},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="epMallStoreName != null">
+        ep_mall_store_name = #{epMallStoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="isImport != null">
+        is_import = #{isImport,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=BIGINT},
+      </if>
+      <if test="initMobile != null">
+        init_mobile = #{initMobile,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

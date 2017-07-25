@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.role.dao.app.AppMenuStaffMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.role.app.entity.AppMenuStaff">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="is_hot" jdbcType="CHAR" property="isHot" />
+    <result column="is_img" jdbcType="CHAR" property="isImg" />
+    <result column="staff_id" jdbcType="BIGINT" property="staffId" />
+    <result column="menu_id" jdbcType="INTEGER" property="menuId" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, is_hot, is_img, staff_id, menu_id, store_id
+  </sql>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_menu_staff
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from app_menu_staff
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.role.app.entity.AppMenuStaff" useGeneratedKeys="true">
+    insert into app_menu_staff
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="isHot != null">
+        is_hot,
+      </if>
+      <if test="isImg != null">
+        is_img,
+      </if>
+      <if test="staffId != null">
+        staff_id,
+      </if>
+      <if test="menuId != null">
+        menu_id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null">
+        #{isHot,jdbcType=CHAR},
+      </if>
+      <if test="isImg != null">
+        #{isImg,jdbcType=CHAR},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=BIGINT},
+      </if>
+      <if test="menuId != null">
+        #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.role.app.entity.AppMenuStaff">
+    update app_menu_staff
+    <set>
+      <if test="isHot != null">
+        is_hot = #{isHot,jdbcType=CHAR},
+      </if>
+      <if test="isImg != null">
+        is_img = #{isImg,jdbcType=CHAR},
+      </if>
+      <if test="staffId != null">
+        staff_id = #{staffId,jdbcType=BIGINT},
+      </if>
+      <if test="menuId != null">
+        menu_id = #{menuId,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByMenuId" parameterType="com.epoint.role.app.entity.AppMenuStaff">
+    update app_menu_staff
+    <set>
+      <if test="isHot != null">
+        is_hot = #{isHot,jdbcType=CHAR},
+      </if>
+      <if test="isImg != null">
+        is_img = #{isImg,jdbcType=CHAR},
+      </if>
+    </set>
+    where menu_id = #{menuId}
+    <if test="staffId != null">
+      and staff_id=#{staffId}
+    </if>
+    <if test="storeId != null">
+      and store_id = #{storeId}
+    </if>
+  </update>
+
+
+  <select id="queryAll"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from app_menu_staff where staff_id=#{staffId} and store_id = #{storeId}
+  </select>
+
+  <select id="queryIsImg"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from app_menu_staff where is_img=1
+    <if test="staffId != null">
+      and staff_id=#{staffId}
+    </if>
+    <if test="storeId != null">
+      and store_id = #{storeId}
+    </if>
+  </select>
+
+  <select id="queryIsHot"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from app_menu_staff where is_img=1 and is_hot = 1
+    <if test="staffId != null">
+      and staff_id=#{staffId}
+    </if>
+    <if test="storeId != null">
+      and store_id = #{storeId}
+    </if>
+  </select>
+
+</mapper>

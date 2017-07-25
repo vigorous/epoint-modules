@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.tmsg.dao.MsgTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.tmsg.entity.MsgTemplate">
+    <id column="template_id_short" jdbcType="VARCHAR" property="templateIdShort" />
+    <result column="industry_code" jdbcType="INTEGER" property="industryCode" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="sub_title" jdbcType="VARCHAR" property="subTitle" />
+    <result column="content_template" jdbcType="VARCHAR" property="contentTemplate" />
+    <result column="content_example" jdbcType="VARCHAR" property="contentExample" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    template_id_short, industry_code, title, sub_title, content_template, content_example, 
+    update_time, create_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wtp_msg_template
+    where template_id_short = #{templateIdShort,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.String">
+    delete from wtp_msg_template
+    where template_id_short = #{templateIdShort,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.tmsg.entity.MsgTemplate" useGeneratedKeys="true">
+    insert into wtp_msg_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="templateIdShort != null">
+        template_id_short,
+      </if>
+      <if test="industryCode != null">
+        industry_code,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="subTitle != null">
+        sub_title,
+      </if>
+      <if test="contentTemplate != null">
+        content_template,
+      </if>
+      <if test="contentExample != null">
+        content_example,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="templateIdShort != null">
+        #{templateIdShort,jdbcType=VARCHAR},
+      </if>
+      <if test="industryCode != null">
+        #{industryCode,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subTitle != null">
+        #{subTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contentTemplate != null">
+        #{contentTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="contentExample != null">
+        #{contentExample,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.tmsg.entity.MsgTemplate">
+    update wtp_msg_template
+    <set>
+      <if test="industryCode != null">
+        industry_code = #{industryCode,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="subTitle != null">
+        sub_title = #{subTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contentTemplate != null">
+        content_template = #{contentTemplate,jdbcType=VARCHAR},
+      </if>
+      <if test="contentExample != null">
+        content_example = #{contentExample,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where template_id_short = #{templateIdShort,jdbcType=VARCHAR}
+  </update>
+
+  <select id="queryAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wtp_msg_template
+  </select>
+</mapper>

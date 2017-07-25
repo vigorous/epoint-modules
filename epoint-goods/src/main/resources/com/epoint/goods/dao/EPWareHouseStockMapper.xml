@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.goods.dao.EPWareHouseStockMapper">
+    <resultMap id="BaseResultMap" type="com.epoint.goods.entity.WareHouseStock">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="erp_warehouse_id" jdbcType="BIGINT" property="warehouseId"/>
+        <result column="erp_stock_id" jdbcType="BIGINT" property="stockId"/>
+        <result column="erp_goods_id" jdbcType="BIGINT" property="goodsId"/>
+        <result column="erp_store_id" jdbcType="BIGINT" property="storeId"/>
+        <result column="amount" jdbcType="DOUBLE" property="amount"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="supply_order_id" jdbcType="BIGINT" property="supplyOrderId"/>
+        <result column="stock_no" jdbcType="VARCHAR" property="stockNo"/>
+        <result column="purchase_price" jdbcType="DOUBLE" property="purchasePrice"/>
+        <result column="init_amount" jdbcType="DOUBLE" property="initAmount"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, erp_warehouse_id, erp_stock_id, erp_goods_id, erp_store_id, amount, create_time, 
+    supply_order_id, stock_no, purchase_price, init_amount
+  </sql>
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from erp_warehouse_stock
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_warehouse_stock
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.goods.entity.WareHouseStock"
+            useGeneratedKeys="true">
+        insert into erp_warehouse_stock
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="warehouseId != null">
+                erp_warehouse_id,
+            </if>
+            <if test="stockId != null">
+                erp_stock_id,
+            </if>
+            <if test="goodsId != null">
+                erp_goods_id,
+            </if>
+            <if test="storeId != null">
+                erp_store_id,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="supplyOrderId != null">
+                supply_order_id,
+            </if>
+            <if test="stockNo != null">
+                stock_no,
+            </if>
+            <if test="purchasePrice != null">
+                purchase_price,
+            </if>
+            <if test="initAmount != null">
+                init_amount,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="warehouseId != null">
+                #{warehouseId,jdbcType=BIGINT},
+            </if>
+            <if test="stockId != null">
+                #{stockId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsId != null">
+                #{goodsId,jdbcType=BIGINT},
+            </if>
+            <if test="storeId != null">
+                #{storeId,jdbcType=BIGINT},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="supplyOrderId != null">
+                #{supplyOrderId,jdbcType=BIGINT},
+            </if>
+            <if test="stockNo != null">
+                #{stockNo,jdbcType=VARCHAR},
+            </if>
+            <if test="purchasePrice != null">
+                #{purchasePrice,jdbcType=DOUBLE},
+            </if>
+            <if test="initAmount != null">
+                #{initAmount,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateById" parameterType="com.epoint.goods.entity.WareHouseStock">
+        update erp_warehouse_stock
+        <set>
+            <if test="warehouseId != null">
+                erp_warehouse_id = #{warehouseId,jdbcType=BIGINT},
+            </if>
+            <if test="stockId != null">
+                erp_stock_id = #{stockId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsId != null">
+                erp_goods_id = #{goodsId,jdbcType=BIGINT},
+            </if>
+            <if test="storeId != null">
+                erp_store_id = #{storeId,jdbcType=BIGINT},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="supplyOrderId != null">
+                supply_order_id = #{supplyOrderId,jdbcType=BIGINT},
+            </if>
+            <if test="stockNo != null">
+                stock_no = #{stockNo,jdbcType=VARCHAR},
+            </if>
+            <if test="purchasePrice != null">
+                purchase_price = #{purchasePrice,jdbcType=DOUBLE},
+            </if>
+            <if test="initAmount != null">
+                init_amount = #{initAmount,jdbcType=DOUBLE},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="queryWarehouseStockByCondition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from erp_warehouse_stock
+        where erp_goods_id=#{goodsId}
+            and erp_store_id=#{storeId}
+            <![CDATA[ and amount > 0 ]]>
+            <if test="warehouseId != null">
+                and erp_warehouse_id=#{warehouseId}
+            </if>
+        order by create_time
+    </select>
+    
+    <update id="updateAmountById" parameterType="com.epoint.goods.entity.WareHouseStock">
+        update erp_warehouse_stock
+        set amount = #{amount}
+        where id = #{id}
+          <![CDATA[ and amount >= #{amount} ]]>
+    </update>
+</mapper>

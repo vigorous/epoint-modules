@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPRefundOrderPrePayItemMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.RefundOrderPrePayItem">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="card_item_id" jdbcType="INTEGER" property="cardItemId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="item_type" jdbcType="INTEGER" property="itemType" />
+    <result column="item_note" jdbcType="VARCHAR" property="itemNote" />
+    <result column="item_amt" jdbcType="DOUBLE" property="itemAmt" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="is_presented" jdbcType="INTEGER" property="isPresented" />
+    <result column="refund_order_id" jdbcType="BIGINT" property="refundOrderId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, card_item_id, order_id, item_type, item_note, item_amt, create_time, is_presented, 
+    refund_order_id
+  </sql>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_refund_order_pre_pay_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from erp_refund_order_pre_pay_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.RefundOrderPrePayItem" useGeneratedKeys="true">
+    insert into erp_refund_order_pre_pay_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="cardItemId != null">
+        card_item_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="itemNote != null">
+        item_note,
+      </if>
+      <if test="itemAmt != null">
+        item_amt,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="isPresented != null">
+        is_presented,
+      </if>
+      <if test="refundOrderId != null">
+        refund_order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cardItemId != null">
+        #{cardItemId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=INTEGER},
+      </if>
+      <if test="itemNote != null">
+        #{itemNote,jdbcType=VARCHAR},
+      </if>
+      <if test="itemAmt != null">
+        #{itemAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isPresented != null">
+        #{isPresented,jdbcType=INTEGER},
+      </if>
+      <if test="refundOrderId != null">
+        #{refundOrderId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.RefundOrderPrePayItem">
+    update erp_refund_order_pre_pay_item
+    <set>
+      <if test="cardItemId != null">
+        card_item_id = #{cardItemId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="itemType != null">
+        item_type = #{itemType,jdbcType=INTEGER},
+      </if>
+      <if test="itemNote != null">
+        item_note = #{itemNote,jdbcType=VARCHAR},
+      </if>
+      <if test="itemAmt != null">
+        item_amt = #{itemAmt,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isPresented != null">
+        is_presented = #{isPresented,jdbcType=INTEGER},
+      </if>
+      <if test="refundOrderId != null">
+        refund_order_id = #{refundOrderId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

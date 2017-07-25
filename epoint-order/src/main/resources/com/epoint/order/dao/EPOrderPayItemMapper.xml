@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPOrderPayItemMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.OrderPayItem">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="erp_work_order_id" jdbcType="BIGINT" property="workOrderId" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="card_id" jdbcType="BIGINT" property="cardId" />
+    <result column="act_code" jdbcType="VARCHAR" property="actCode" />
+    <result column="point_amount" jdbcType="DOUBLE" property="pointAmount" />
+    <result column="discount" jdbcType="DOUBLE" property="discount" />
+    <result column="ext" jdbcType="VARCHAR" property="ext" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="card_item_id" jdbcType="BIGINT" property="cardItemId" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="item_type" jdbcType="BIGINT" property="itemType" />
+    <result column="is_presented" jdbcType="INTEGER" property="isPresented" />
+    <result column="is_pre_pay" jdbcType="INTEGER" property="isPrePay" />
+    <result column="is_scan" jdbcType="INTEGER" property="isScan" />
+    <result column="is_online_way" jdbcType="INTEGER" property="isOnlineWay" />
+    <result column="is_online_sync" jdbcType="INTEGER" property="isOnlineSync" />
+    <result column="member_coupon_id" jdbcType="BIGINT" property="memberCouponId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, erp_work_order_id, amount, type, card_id, act_code, point_amount, discount, ext, 
+    create_time, erp_store_id, card_item_id, item_id, item_type, is_presented, is_pre_pay, 
+    is_scan, is_online_way, is_online_sync, member_coupon_id
+  </sql>
+  <select id="selectById" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_order_pay_item
+    where id = #{id,jdbcType=BIGINT}
+      and erp_work_order_id = #{workOrderId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="map">
+    delete from erp_order_pay_item
+    where id = #{id,jdbcType=BIGINT}
+      and erp_work_order_id = #{workOrderId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.OrderPayItem" useGeneratedKeys="true">
+    insert into erp_order_pay_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="workOrderId != null">
+        erp_work_order_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="actCode != null">
+        act_code,
+      </if>
+      <if test="pointAmount != null">
+        point_amount,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="ext != null">
+        ext,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="cardItemId != null">
+        card_item_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="isPresented != null">
+        is_presented,
+      </if>
+      <if test="isPrePay != null">
+        is_pre_pay,
+      </if>
+      <if test="isScan != null">
+        is_scan,
+      </if>
+      <if test="isOnlineWay != null">
+        is_online_way,
+      </if>
+      <if test="isOnlineSync != null">
+        is_online_sync,
+      </if>
+      <if test="memberCouponId != null">
+        member_coupon_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="workOrderId != null">
+        #{workOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="cardId != null">
+        #{cardId,jdbcType=BIGINT},
+      </if>
+      <if test="actCode != null">
+        #{actCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pointAmount != null">
+        #{pointAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="ext != null">
+        #{ext,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="cardItemId != null">
+        #{cardItemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=BIGINT},
+      </if>
+      <if test="isPresented != null">
+        #{isPresented,jdbcType=INTEGER},
+      </if>
+      <if test="isPrePay != null">
+        #{isPrePay,jdbcType=INTEGER},
+      </if>
+      <if test="isScan != null">
+        #{isScan,jdbcType=INTEGER},
+      </if>
+      <if test="isOnlineWay != null">
+        #{isOnlineWay,jdbcType=INTEGER},
+      </if>
+      <if test="isOnlineSync != null">
+        #{isOnlineSync,jdbcType=INTEGER},
+      </if>
+      <if test="memberCouponId != null">
+        #{memberCouponId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.OrderPayItem">
+    update erp_order_pay_item
+    <set>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="cardId != null">
+        card_id = #{cardId,jdbcType=BIGINT},
+      </if>
+      <if test="actCode != null">
+        act_code = #{actCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pointAmount != null">
+        point_amount = #{pointAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="ext != null">
+        ext = #{ext,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="cardItemId != null">
+        card_item_id = #{cardItemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemType != null">
+        item_type = #{itemType,jdbcType=BIGINT},
+      </if>
+      <if test="isPresented != null">
+        is_presented = #{isPresented,jdbcType=INTEGER},
+      </if>
+      <if test="isPrePay != null">
+        is_pre_pay = #{isPrePay,jdbcType=INTEGER},
+      </if>
+      <if test="isScan != null">
+        is_scan = #{isScan,jdbcType=INTEGER},
+      </if>
+      <if test="isOnlineWay != null">
+        is_online_way = #{isOnlineWay,jdbcType=INTEGER},
+      </if>
+      <if test="isOnlineSync != null">
+        is_online_sync = #{isOnlineSync,jdbcType=INTEGER},
+      </if>
+      <if test="memberCouponId != null">
+        member_coupon_id = #{memberCouponId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+      and erp_work_order_id = #{workOrderId,jdbcType=BIGINT}
+  </update>
+</mapper>

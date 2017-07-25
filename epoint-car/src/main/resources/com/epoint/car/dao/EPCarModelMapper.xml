@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.car.dao.EPCarModelMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.car.entity.CarModel">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="erp_car_brand_id" jdbcType="BIGINT" property="carBrandId" />
+    <result column="erp_car_series_id" jdbcType="BIGINT" property="carSeriesId" />
+    <result column="guide_price" jdbcType="VARCHAR" property="guidePrice" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="levelId" jdbcType="CHAR" property="levelid" />
+    <result column="model_year" jdbcType="SMALLINT" property="modelYear" />
+    <result column="emission" jdbcType="VARCHAR" property="emission" />
+    <result column="tty" jdbcType="SMALLINT" property="tty" />
+    <result column="ttm" jdbcType="SMALLINT" property="ttm" />
+    <result column="tsy" jdbcType="SMALLINT" property="tsy" />
+    <result column="import_type" jdbcType="CHAR" property="importType" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+    <result column="kstore_id" jdbcType="BIGINT" property="kstoreId" />
+    <result column="unique_indexed" jdbcType="SMALLINT" property="uniqueIndexed" />
+    <result column="cylinder" jdbcType="VARCHAR" property="cylinder" />
+    <result column="enginer_place" jdbcType="SMALLINT" property="enginerPlace" />
+    <result column="driver_type" jdbcType="SMALLINT" property="driverType" />
+    <result column="oil_grade" jdbcType="SMALLINT" property="oilGrade" />
+    <result column="front_brake_type" jdbcType="SMALLINT" property="frontBrakeType" />
+    <result column="rear_brake_type" jdbcType="SMALLINT" property="rearBrakeType" />
+    <result column="gearbox" jdbcType="VARCHAR" property="gearbox" />
+    <result column="power_steer" jdbcType="VARCHAR" property="powerSteer" />
+    <result column="front_tyre_spec" jdbcType="VARCHAR" property="frontTyreSpec" />
+    <result column="rear_tyre_spec" jdbcType="VARCHAR" property="rearTyreSpec" />
+    <result column="front_hub_spec" jdbcType="VARCHAR" property="frontHubSpec" />
+    <result column="rear_hub_spec" jdbcType="VARCHAR" property="rearHubSpec" />
+    <result column="producer" jdbcType="VARCHAR" property="producer" />
+    <result column="intake_form" jdbcType="VARCHAR" property="intakeForm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, erp_car_brand_id, erp_car_series_id, guide_price, price, levelId, model_year, 
+    emission, tty, ttm, tsy, import_type, remark, status, attribute, kstore_id, unique_indexed, 
+    cylinder, enginer_place, driver_type, oil_grade, front_brake_type, rear_brake_type, 
+    gearbox, power_steer, front_tyre_spec, rear_tyre_spec, front_hub_spec, rear_hub_spec, 
+    producer, intake_form
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_car_model
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_car_model
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.car.entity.CarModel" useGeneratedKeys="true">
+    insert into erp_car_model
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="carBrandId != null">
+        erp_car_brand_id,
+      </if>
+      <if test="carSeriesId != null">
+        erp_car_series_id,
+      </if>
+      <if test="guidePrice != null">
+        guide_price,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="levelid != null">
+        levelId,
+      </if>
+      <if test="modelYear != null">
+        model_year,
+      </if>
+      <if test="emission != null">
+        emission,
+      </if>
+      <if test="tty != null">
+        tty,
+      </if>
+      <if test="ttm != null">
+        ttm,
+      </if>
+      <if test="tsy != null">
+        tsy,
+      </if>
+      <if test="importType != null">
+        import_type,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="attribute != null">
+        attribute,
+      </if>
+      <if test="kstoreId != null">
+        kstore_id,
+      </if>
+      <if test="uniqueIndexed != null">
+        unique_indexed,
+      </if>
+      <if test="cylinder != null">
+        cylinder,
+      </if>
+      <if test="enginerPlace != null">
+        enginer_place,
+      </if>
+      <if test="driverType != null">
+        driver_type,
+      </if>
+      <if test="oilGrade != null">
+        oil_grade,
+      </if>
+      <if test="frontBrakeType != null">
+        front_brake_type,
+      </if>
+      <if test="rearBrakeType != null">
+        rear_brake_type,
+      </if>
+      <if test="gearbox != null">
+        gearbox,
+      </if>
+      <if test="powerSteer != null">
+        power_steer,
+      </if>
+      <if test="frontTyreSpec != null">
+        front_tyre_spec,
+      </if>
+      <if test="rearTyreSpec != null">
+        rear_tyre_spec,
+      </if>
+      <if test="frontHubSpec != null">
+        front_hub_spec,
+      </if>
+      <if test="rearHubSpec != null">
+        rear_hub_spec,
+      </if>
+      <if test="producer != null">
+        producer,
+      </if>
+      <if test="intakeForm != null">
+        intake_form,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="carBrandId != null">
+        #{carBrandId,jdbcType=BIGINT},
+      </if>
+      <if test="carSeriesId != null">
+        #{carSeriesId,jdbcType=BIGINT},
+      </if>
+      <if test="guidePrice != null">
+        #{guidePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="levelid != null">
+        #{levelid,jdbcType=CHAR},
+      </if>
+      <if test="modelYear != null">
+        #{modelYear,jdbcType=SMALLINT},
+      </if>
+      <if test="emission != null">
+        #{emission,jdbcType=VARCHAR},
+      </if>
+      <if test="tty != null">
+        #{tty,jdbcType=SMALLINT},
+      </if>
+      <if test="ttm != null">
+        #{ttm,jdbcType=SMALLINT},
+      </if>
+      <if test="tsy != null">
+        #{tsy,jdbcType=SMALLINT},
+      </if>
+      <if test="importType != null">
+        #{importType,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="kstoreId != null">
+        #{kstoreId,jdbcType=BIGINT},
+      </if>
+      <if test="uniqueIndexed != null">
+        #{uniqueIndexed,jdbcType=SMALLINT},
+      </if>
+      <if test="cylinder != null">
+        #{cylinder,jdbcType=VARCHAR},
+      </if>
+      <if test="enginerPlace != null">
+        #{enginerPlace,jdbcType=SMALLINT},
+      </if>
+      <if test="driverType != null">
+        #{driverType,jdbcType=SMALLINT},
+      </if>
+      <if test="oilGrade != null">
+        #{oilGrade,jdbcType=SMALLINT},
+      </if>
+      <if test="frontBrakeType != null">
+        #{frontBrakeType,jdbcType=SMALLINT},
+      </if>
+      <if test="rearBrakeType != null">
+        #{rearBrakeType,jdbcType=SMALLINT},
+      </if>
+      <if test="gearbox != null">
+        #{gearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="powerSteer != null">
+        #{powerSteer,jdbcType=VARCHAR},
+      </if>
+      <if test="frontTyreSpec != null">
+        #{frontTyreSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="rearTyreSpec != null">
+        #{rearTyreSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="frontHubSpec != null">
+        #{frontHubSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="rearHubSpec != null">
+        #{rearHubSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="producer != null">
+        #{producer,jdbcType=VARCHAR},
+      </if>
+      <if test="intakeForm != null">
+        #{intakeForm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.car.entity.CarModel">
+    update erp_car_model
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="carBrandId != null">
+        erp_car_brand_id = #{carBrandId,jdbcType=BIGINT},
+      </if>
+      <if test="carSeriesId != null">
+        erp_car_series_id = #{carSeriesId,jdbcType=BIGINT},
+      </if>
+      <if test="guidePrice != null">
+        guide_price = #{guidePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="levelid != null">
+        levelId = #{levelid,jdbcType=CHAR},
+      </if>
+      <if test="modelYear != null">
+        model_year = #{modelYear,jdbcType=SMALLINT},
+      </if>
+      <if test="emission != null">
+        emission = #{emission,jdbcType=VARCHAR},
+      </if>
+      <if test="tty != null">
+        tty = #{tty,jdbcType=SMALLINT},
+      </if>
+      <if test="ttm != null">
+        ttm = #{ttm,jdbcType=SMALLINT},
+      </if>
+      <if test="tsy != null">
+        tsy = #{tsy,jdbcType=SMALLINT},
+      </if>
+      <if test="importType != null">
+        import_type = #{importType,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="attribute != null">
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+      <if test="kstoreId != null">
+        kstore_id = #{kstoreId,jdbcType=BIGINT},
+      </if>
+      <if test="uniqueIndexed != null">
+        unique_indexed = #{uniqueIndexed,jdbcType=SMALLINT},
+      </if>
+      <if test="cylinder != null">
+        cylinder = #{cylinder,jdbcType=VARCHAR},
+      </if>
+      <if test="enginerPlace != null">
+        enginer_place = #{enginerPlace,jdbcType=SMALLINT},
+      </if>
+      <if test="driverType != null">
+        driver_type = #{driverType,jdbcType=SMALLINT},
+      </if>
+      <if test="oilGrade != null">
+        oil_grade = #{oilGrade,jdbcType=SMALLINT},
+      </if>
+      <if test="frontBrakeType != null">
+        front_brake_type = #{frontBrakeType,jdbcType=SMALLINT},
+      </if>
+      <if test="rearBrakeType != null">
+        rear_brake_type = #{rearBrakeType,jdbcType=SMALLINT},
+      </if>
+      <if test="gearbox != null">
+        gearbox = #{gearbox,jdbcType=VARCHAR},
+      </if>
+      <if test="powerSteer != null">
+        power_steer = #{powerSteer,jdbcType=VARCHAR},
+      </if>
+      <if test="frontTyreSpec != null">
+        front_tyre_spec = #{frontTyreSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="rearTyreSpec != null">
+        rear_tyre_spec = #{rearTyreSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="frontHubSpec != null">
+        front_hub_spec = #{frontHubSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="rearHubSpec != null">
+        rear_hub_spec = #{rearHubSpec,jdbcType=VARCHAR},
+      </if>
+      <if test="producer != null">
+        producer = #{producer,jdbcType=VARCHAR},
+      </if>
+      <if test="intakeForm != null">
+        intake_form = #{intakeForm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

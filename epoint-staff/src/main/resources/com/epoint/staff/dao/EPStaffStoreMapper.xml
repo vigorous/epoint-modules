@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.staff.dao.EPStaffStoreMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.staff.entity.StaffStore">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="work_no" jdbcType="VARCHAR" property="workNo" />
+    <result column="erp_staff_id" jdbcType="BIGINT" property="erpStaffId" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="erpStoreId" />
+    <result column="star" jdbcType="INTEGER" property="star" />
+    <result column="tech_level" jdbcType="INTEGER" property="techLevel" />
+    <result column="tech" jdbcType="VARCHAR" property="tech" />
+    <result column="salary" jdbcType="DOUBLE" property="salary" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="erp_dept_id" jdbcType="BIGINT" property="erpDeptId" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="enter_date" jdbcType="TIMESTAMP" property="enterDate" />
+    <result column="leave_date" jdbcType="TIMESTAMP" property="leaveDate" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="parent_store_id" jdbcType="BIGINT" property="parentStoreId" />
+    <result column="parent_staff_store_id" jdbcType="BIGINT" property="parentStaffStoreId" />
+    <result column="erp_station_id" jdbcType="BIGINT" property="erpStationId" />
+    <result column="is_default" jdbcType="INTEGER" property="isDefault" />
+    <result column="app_role_id" jdbcType="BIGINT" property="appRoleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, work_no, erp_staff_id, erp_store_id, star, tech_level, tech, salary, status, 
+    create_time, erp_dept_id, role_id, enter_date, leave_date, update_time, login_time, 
+    parent_store_id, parent_staff_store_id, erp_station_id, is_default, app_role_id
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_staff_store
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_staff_store
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.staff.entity.StaffStore" useGeneratedKeys="true">
+    insert into erp_staff_store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="workNo != null">
+        work_no,
+      </if>
+      <if test="erpStaffId != null">
+        erp_staff_id,
+      </if>
+      <if test="erpStoreId != null">
+        erp_store_id,
+      </if>
+      <if test="star != null">
+        star,
+      </if>
+      <if test="techLevel != null">
+        tech_level,
+      </if>
+      <if test="tech != null">
+        tech,
+      </if>
+      <if test="salary != null">
+        salary,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="erpDeptId != null">
+        erp_dept_id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="enterDate != null">
+        enter_date,
+      </if>
+      <if test="leaveDate != null">
+        leave_date,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="parentStoreId != null">
+        parent_store_id,
+      </if>
+      <if test="parentStaffStoreId != null">
+        parent_staff_store_id,
+      </if>
+      <if test="erpStationId != null">
+        erp_station_id,
+      </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
+      <if test="appRoleId != null">
+        app_role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="workNo != null">
+        #{workNo,jdbcType=VARCHAR},
+      </if>
+      <if test="erpStaffId != null">
+        #{erpStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="erpStoreId != null">
+        #{erpStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="star != null">
+        #{star,jdbcType=INTEGER},
+      </if>
+      <if test="techLevel != null">
+        #{techLevel,jdbcType=INTEGER},
+      </if>
+      <if test="tech != null">
+        #{tech,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="erpDeptId != null">
+        #{erpDeptId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="enterDate != null">
+        #{enterDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveDate != null">
+        #{leaveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentStoreId != null">
+        #{parentStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="parentStaffStoreId != null">
+        #{parentStaffStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="erpStationId != null">
+        #{erpStationId,jdbcType=BIGINT},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="appRoleId != null">
+        #{appRoleId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.staff.entity.StaffStore">
+    update erp_staff_store
+    <set>
+      <if test="workNo != null">
+        work_no = #{workNo,jdbcType=VARCHAR},
+      </if>
+      <if test="erpStaffId != null">
+        erp_staff_id = #{erpStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="erpStoreId != null">
+        erp_store_id = #{erpStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="star != null">
+        star = #{star,jdbcType=INTEGER},
+      </if>
+      <if test="techLevel != null">
+        tech_level = #{techLevel,jdbcType=INTEGER},
+      </if>
+      <if test="tech != null">
+        tech = #{tech,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        salary = #{salary,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="erpDeptId != null">
+        erp_dept_id = #{erpDeptId,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="enterDate != null">
+        enter_date = #{enterDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveDate != null">
+        leave_date = #{leaveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parentStoreId != null">
+        parent_store_id = #{parentStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="parentStaffStoreId != null">
+        parent_staff_store_id = #{parentStaffStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="erpStationId != null">
+        erp_station_id = #{erpStationId,jdbcType=BIGINT},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=INTEGER},
+      </if>
+      <if test="appRoleId != null">
+        app_role_id = #{appRoleId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

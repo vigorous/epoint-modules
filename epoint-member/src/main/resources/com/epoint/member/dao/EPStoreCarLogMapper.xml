@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.member.dao.EPStoreCarLogMapper">
+    <resultMap id="BaseResultMap" type="com.epoint.member.entity.StoreCarLog">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="car_no" jdbcType="VARCHAR" property="carNo"/>
+        <result column="erp_member_id" jdbcType="BIGINT" property="memberId"/>
+        <result column="erp_store_id" jdbcType="BIGINT" property="storeId"/>
+        <result column="erp_parent_store_id" jdbcType="BIGINT" property="parentStoreId"/>
+        <result column="erp_car_brand_id" jdbcType="BIGINT" property="carBrandId"/>
+        <result column="erp_car_series_id" jdbcType="BIGINT" property="carSeriesId"/>
+        <result column="erp_car_model_id" jdbcType="BIGINT" property="carModelId"/>
+        <result column="vehicle_id" jdbcType="VARCHAR" property="vehicleId"/>
+        <result column="buy_time" jdbcType="DATE" property="buyTime"/>
+        <result column="engine_no" jdbcType="VARCHAR" property="engineNo"/>
+        <result column="kilometers" jdbcType="VARCHAR" property="kilometers"/>
+        <result column="insurance_date" jdbcType="TIMESTAMP" property="insuranceDate"/>
+        <result column="insurance_expire_time" jdbcType="TIMESTAMP" property="insuranceExpireTime"/>
+        <result column="insurance_company" jdbcType="VARCHAR" property="insuranceCompany"/>
+        <result column="pre_maintain_mileage" jdbcType="DOUBLE" property="preMaintainMileage"/>
+        <result column="next_maintain_mileage" jdbcType="DOUBLE" property="nextMaintainMileage"/>
+        <result column="pre_maintain_time" jdbcType="TIMESTAMP" property="preMaintainTime"/>
+        <result column="next_maintain_time" jdbcType="TIMESTAMP" property="nextMaintainTime"/>
+        <result column="annual_expire_time" jdbcType="TIMESTAMP" property="annualExpireTime"/>
+        <result column="tire_brand" jdbcType="VARCHAR" property="tireBrand"/>
+        <result column="tire_change_time" jdbcType="TIMESTAMP" property="tireChangeTime"/>
+        <result column="car_license_no" jdbcType="VARCHAR" property="carLicenseNo"/>
+        <result column="own_type" jdbcType="VARCHAR" property="ownType"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="own_name" jdbcType="VARCHAR" property="ownName"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="car_brand_name" jdbcType="VARCHAR" property="carBrandName"/>
+        <result column="car_remark" jdbcType="VARCHAR" property="carRemark"/>
+        <result column="car_color" jdbcType="VARCHAR" property="carColor"/>
+        <result column="chassis_no" jdbcType="VARCHAR" property="chassisNo"/>
+        <result column="first_time" jdbcType="TIMESTAMP" property="firstTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, car_no, erp_member_id, erp_store_id, erp_parent_store_id, erp_car_brand_id, erp_car_series_id, 
+    erp_car_model_id, vehicle_id, buy_time, engine_no, kilometers, insurance_date, insurance_expire_time, 
+    insurance_company, pre_maintain_mileage, next_maintain_mileage, pre_maintain_time, 
+    next_maintain_time, annual_expire_time, tire_brand, tire_change_time, car_license_no, 
+    own_type, status, own_name, create_time, update_time, car_brand_name, car_remark, 
+    car_color, chassis_no, first_time
+  </sql>
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from erp_store_car_log
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_store_car_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.member.entity.StoreCarLog"
+            useGeneratedKeys="true">
+        insert into erp_store_car_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="carNo != null">
+                car_no,
+            </if>
+            <if test="memberId != null">
+                erp_member_id,
+            </if>
+            <if test="storeId != null">
+                erp_store_id,
+            </if>
+            <if test="parentStoreId != null">
+                erp_parent_store_id,
+            </if>
+            <if test="carBrandId != null">
+                erp_car_brand_id,
+            </if>
+            <if test="carSeriesId != null">
+                erp_car_series_id,
+            </if>
+            <if test="carModelId != null">
+                erp_car_model_id,
+            </if>
+            <if test="vehicleId != null">
+                vehicle_id,
+            </if>
+            <if test="buyTime != null">
+                buy_time,
+            </if>
+            <if test="engineNo != null">
+                engine_no,
+            </if>
+            <if test="kilometers != null">
+                kilometers,
+            </if>
+            <if test="insuranceDate != null">
+                insurance_date,
+            </if>
+            <if test="insuranceExpireTime != null">
+                insurance_expire_time,
+            </if>
+            <if test="insuranceCompany != null">
+                insurance_company,
+            </if>
+            <if test="preMaintainMileage != null">
+                pre_maintain_mileage,
+            </if>
+            <if test="nextMaintainMileage != null">
+                next_maintain_mileage,
+            </if>
+            <if test="preMaintainTime != null">
+                pre_maintain_time,
+            </if>
+            <if test="nextMaintainTime != null">
+                next_maintain_time,
+            </if>
+            <if test="annualExpireTime != null">
+                annual_expire_time,
+            </if>
+            <if test="tireBrand != null">
+                tire_brand,
+            </if>
+            <if test="tireChangeTime != null">
+                tire_change_time,
+            </if>
+            <if test="carLicenseNo != null">
+                car_license_no,
+            </if>
+            <if test="ownType != null">
+                own_type,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="ownName != null">
+                own_name,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="carBrandName != null">
+                car_brand_name,
+            </if>
+            <if test="carRemark != null">
+                car_remark,
+            </if>
+            <if test="carColor != null">
+                car_color,
+            </if>
+            <if test="chassisNo != null">
+                chassis_no,
+            </if>
+            <if test="firstTime != null">
+                first_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="carNo != null">
+                #{carNo,jdbcType=VARCHAR},
+            </if>
+            <if test="memberId != null">
+                #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="storeId != null">
+                #{storeId,jdbcType=BIGINT},
+            </if>
+            <if test="parentStoreId != null">
+                #{parentStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="carBrandId != null">
+                #{carBrandId,jdbcType=BIGINT},
+            </if>
+            <if test="carSeriesId != null">
+                #{carSeriesId,jdbcType=BIGINT},
+            </if>
+            <if test="carModelId != null">
+                #{carModelId,jdbcType=BIGINT},
+            </if>
+            <if test="vehicleId != null">
+                #{vehicleId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyTime != null">
+                #{buyTime,jdbcType=DATE},
+            </if>
+            <if test="engineNo != null">
+                #{engineNo,jdbcType=VARCHAR},
+            </if>
+            <if test="kilometers != null">
+                #{kilometers,jdbcType=VARCHAR},
+            </if>
+            <if test="insuranceDate != null">
+                #{insuranceDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="insuranceExpireTime != null">
+                #{insuranceExpireTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="insuranceCompany != null">
+                #{insuranceCompany,jdbcType=VARCHAR},
+            </if>
+            <if test="preMaintainMileage != null">
+                #{preMaintainMileage,jdbcType=DOUBLE},
+            </if>
+            <if test="nextMaintainMileage != null">
+                #{nextMaintainMileage,jdbcType=DOUBLE},
+            </if>
+            <if test="preMaintainTime != null">
+                #{preMaintainTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nextMaintainTime != null">
+                #{nextMaintainTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="annualExpireTime != null">
+                #{annualExpireTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tireBrand != null">
+                #{tireBrand,jdbcType=VARCHAR},
+            </if>
+            <if test="tireChangeTime != null">
+                #{tireChangeTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="carLicenseNo != null">
+                #{carLicenseNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ownType != null">
+                #{ownType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="ownName != null">
+                #{ownName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="carBrandName != null">
+                #{carBrandName,jdbcType=VARCHAR},
+            </if>
+            <if test="carRemark != null">
+                #{carRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="carColor != null">
+                #{carColor,jdbcType=VARCHAR},
+            </if>
+            <if test="chassisNo != null">
+                #{chassisNo,jdbcType=VARCHAR},
+            </if>
+            <if test="firstTime != null">
+                #{firstTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateById" parameterType="com.epoint.member.entity.StoreCarLog">
+        update erp_store_car_log
+        <set>
+            <if test="carNo != null">
+                car_no = #{carNo,jdbcType=VARCHAR},
+            </if>
+            <if test="memberId != null">
+                erp_member_id = #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="storeId != null">
+                erp_store_id = #{storeId,jdbcType=BIGINT},
+            </if>
+            <if test="parentStoreId != null">
+                erp_parent_store_id = #{parentStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="carBrandId != null">
+                erp_car_brand_id = #{carBrandId,jdbcType=BIGINT},
+            </if>
+            <if test="carSeriesId != null">
+                erp_car_series_id = #{carSeriesId,jdbcType=BIGINT},
+            </if>
+            <if test="carModelId != null">
+                erp_car_model_id = #{carModelId,jdbcType=BIGINT},
+            </if>
+            <if test="vehicleId != null">
+                vehicle_id = #{vehicleId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyTime != null">
+                buy_time = #{buyTime,jdbcType=DATE},
+            </if>
+            <if test="engineNo != null">
+                engine_no = #{engineNo,jdbcType=VARCHAR},
+            </if>
+            <if test="kilometers != null">
+                kilometers = #{kilometers,jdbcType=VARCHAR},
+            </if>
+            <if test="insuranceDate != null">
+                insurance_date = #{insuranceDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="insuranceExpireTime != null">
+                insurance_expire_time = #{insuranceExpireTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="insuranceCompany != null">
+                insurance_company = #{insuranceCompany,jdbcType=VARCHAR},
+            </if>
+            <if test="preMaintainMileage != null">
+                pre_maintain_mileage = #{preMaintainMileage,jdbcType=DOUBLE},
+            </if>
+            <if test="nextMaintainMileage != null">
+                next_maintain_mileage = #{nextMaintainMileage,jdbcType=DOUBLE},
+            </if>
+            <if test="preMaintainTime != null">
+                pre_maintain_time = #{preMaintainTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="nextMaintainTime != null">
+                next_maintain_time = #{nextMaintainTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="annualExpireTime != null">
+                annual_expire_time = #{annualExpireTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tireBrand != null">
+                tire_brand = #{tireBrand,jdbcType=VARCHAR},
+            </if>
+            <if test="tireChangeTime != null">
+                tire_change_time = #{tireChangeTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="carLicenseNo != null">
+                car_license_no = #{carLicenseNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ownType != null">
+                own_type = #{ownType,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="ownName != null">
+                own_name = #{ownName,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="carBrandName != null">
+                car_brand_name = #{carBrandName,jdbcType=VARCHAR},
+            </if>
+            <if test="carRemark != null">
+                car_remark = #{carRemark,jdbcType=VARCHAR},
+            </if>
+            <if test="carColor != null">
+                car_color = #{carColor,jdbcType=VARCHAR},
+            </if>
+            <if test="chassisNo != null">
+                chassis_no = #{chassisNo,jdbcType=VARCHAR},
+            </if>
+            <if test="firstTime != null">
+                first_time = #{firstTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectByCondition" parameterType="com.epoint.member.entity.StoreCarLog" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from erp_store_car_log
+        <where>
+            <if test="storeId != null">
+                and erp_store_id = #{storeId}
+            </if>
+            <if test="memberId != null">
+                and erp_member_id = #{memberId}
+            </if>
+            <if test="carNo != null">
+                and car_no = #{carNo}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+</mapper>

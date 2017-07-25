@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.coupon.dao.CouponShareResultMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.coupon.entity.CouponShareResult">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="coupon_id" jdbcType="BIGINT" property="couponId" />
+    <result column="reg_member_id" jdbcType="BIGINT" property="regMemberId" />
+    <result column="reg_mobile" jdbcType="VARCHAR" property="regMobile" />
+    <result column="share_member_id" jdbcType="BIGINT" property="shareMemberId" />
+    <result column="share_mobile" jdbcType="VARCHAR" property="shareMobile" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, coupon_id, reg_member_id, reg_mobile, share_member_id, share_mobile, status, 
+    create_time, update_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_coupon_share_result
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_coupon_share_result
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.epoint.coupon.entity.CouponShareResult" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    insert into erp_coupon_share_result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="couponId != null">
+        coupon_id,
+      </if>
+      <if test="regMemberId != null">
+        reg_member_id,
+      </if>
+      <if test="regMobile != null">
+        reg_mobile,
+      </if>
+      <if test="shareMemberId != null">
+        share_member_id,
+      </if>
+      <if test="shareMobile != null">
+        share_mobile,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="couponId != null">
+        #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="regMemberId != null">
+        #{regMemberId,jdbcType=BIGINT},
+      </if>
+      <if test="regMobile != null">
+        #{regMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="shareMemberId != null">
+        #{shareMemberId,jdbcType=BIGINT},
+      </if>
+      <if test="shareMobile != null">
+        #{shareMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.coupon.entity.CouponShareResult">
+    update erp_coupon_share_result
+    <set>
+      <if test="couponId != null">
+        coupon_id = #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="regMemberId != null">
+        reg_member_id = #{regMemberId,jdbcType=BIGINT},
+      </if>
+      <if test="regMobile != null">
+        reg_mobile = #{regMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="shareMemberId != null">
+        share_member_id = #{shareMemberId,jdbcType=BIGINT},
+      </if>
+      <if test="shareMobile != null">
+        share_mobile = #{shareMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

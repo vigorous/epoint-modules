@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPOrderMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.Order">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="seller" jdbcType="BIGINT" property="seller" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="total_money" jdbcType="DOUBLE" property="totalMoney" />
+    <result column="actual_money" jdbcType="DOUBLE" property="actualMoney" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="erp_member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="erp_work_area_id" jdbcType="BIGINT" property="workAreaId" />
+    <result column="car_no" jdbcType="VARCHAR" property="carNo" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="pay_way" jdbcType="CHAR" property="payWay" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="order_staff_id" jdbcType="BIGINT" property="orderStaffId" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="is_comment" jdbcType="BIT" property="isComment" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="booking_time" jdbcType="CHAR" property="bookingTime" />
+    <result column="pay_channel" jdbcType="CHAR" property="payChannel" />
+    <result column="order_type" jdbcType="CHAR" property="orderType" />
+    <result column="is_receive" jdbcType="BIT" property="isReceive" />
+    <result column="ext_1" jdbcType="BIGINT" property="ext1" />
+    <result column="remark_2" jdbcType="VARCHAR" property="remark2" />
+    <result column="device_code" jdbcType="VARCHAR" property="deviceCode" />
+    <result column="pay_way_money" jdbcType="DOUBLE" property="payWayMoney" />
+    <result column="get_money" jdbcType="DOUBLE" property="getMoney" />
+    <result column="back_money" jdbcType="DOUBLE" property="backMoney" />
+    <result column="creator" jdbcType="BIGINT" property="creator" />
+    <result column="creator_type" jdbcType="CHAR" property="creatorType" />
+    <result column="cancel_traded_mark" jdbcType="CHAR" property="cancelTradedMark" />
+    <result column="order_assessment_star" jdbcType="INTEGER" property="orderAssessmentStar" />
+    <result column="auto_deduct" jdbcType="INTEGER" property="autoDeduct" />
+    <result column="other_system_order_no" jdbcType="VARCHAR" property="otherSystemOrderNo" />
+    <result column="pay_status" jdbcType="INTEGER" property="payStatus" />
+    <result column="parent_store_id" jdbcType="INTEGER" property="parentStoreId" />
+    <result column="pre_amount" jdbcType="DOUBLE" property="preAmount" />
+    <result column="pay_from" jdbcType="INTEGER" property="payFrom" />
+    <result column="car_id" jdbcType="INTEGER" property="carId" />
+    <result column="car_check_id" jdbcType="INTEGER" property="carCheckId" />
+    <result column="rework" jdbcType="INTEGER" property="rework" />
+    <result column="transaction_id" jdbcType="VARCHAR" property="transactionId" />
+    <result column="out_trade_no" jdbcType="VARCHAR" property="outTradeNo" />
+    <result column="pre_transaction_id" jdbcType="VARCHAR" property="preTransactionId" />
+    <result column="pre_out_trade_no" jdbcType="VARCHAR" property="preOutTradeNo" />
+    <result column="delay_repay_id" jdbcType="BIGINT" property="delayRepayId" />
+    <result column="old_order" jdbcType="SMALLINT" property="oldOrder" />
+    <result column="entry_time" jdbcType="TIMESTAMP" property="entryTime" />
+    <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
+    <result column="member_desc" jdbcType="VARCHAR" property="memberDesc" />
+    <result column="get_staff_id" jdbcType="BIGINT" property="getStaffId" />
+    <result column="out_staff_id" jdbcType="BIGINT" property="outStaffId" />
+    <result column="refund_status" jdbcType="CHAR" property="refundStatus" />
+    <result column="scan_id" jdbcType="INTEGER" property="scanId" />
+    <result column="is_online_way" jdbcType="INTEGER" property="isOnlineWay" />
+    <result column="settle_way" jdbcType="SMALLINT" property="settleWay" />
+    <result column="ext2" jdbcType="VARCHAR" property="ext2" />
+    <result column="card_id" jdbcType="BIGINT" property="cardId" />
+    <result column="car_key_no" jdbcType="VARCHAR" property="carKeyNo" />
+    <result column="reception_id" jdbcType="BIGINT" property="receptionId" />
+    <result column="flow_id" jdbcType="BIGINT" property="flowId" />
+    <result column="qt_status" jdbcType="INTEGER" property="qtStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, status, seller, create_time, total_money, actual_money, erp_store_id, 
+    erp_member_id, erp_work_area_id, car_no, remark, pay_way, update_time, order_staff_id, 
+    start_time, end_time, is_comment, channel, booking_time, pay_channel, order_type, 
+    is_receive, ext_1, remark_2, device_code, pay_way_money, get_money, back_money, creator, 
+    creator_type, cancel_traded_mark, order_assessment_star, auto_deduct, other_system_order_no, 
+    pay_status, parent_store_id, pre_amount, pay_from, car_id, car_check_id, rework, 
+    transaction_id, out_trade_no, pre_transaction_id, pre_out_trade_no, delay_repay_id, 
+    old_order, entry_time, finish_time, member_desc, get_staff_id, out_staff_id, refund_status, 
+    scan_id, is_online_way, settle_way, ext2, card_id, car_key_no, reception_id, flow_id, 
+    qt_status
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_work_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_work_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.Order" useGeneratedKeys="true">
+    insert into erp_work_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="seller != null">
+        seller,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="totalMoney != null">
+        total_money,
+      </if>
+      <if test="actualMoney != null">
+        actual_money,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="memberId != null">
+        erp_member_id,
+      </if>
+      <if test="workAreaId != null">
+        erp_work_area_id,
+      </if>
+      <if test="carNo != null">
+        car_no,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="payWay != null">
+        pay_way,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="orderStaffId != null">
+        order_staff_id,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="isComment != null">
+        is_comment,
+      </if>
+      <if test="channel != null">
+        channel,
+      </if>
+      <if test="bookingTime != null">
+        booking_time,
+      </if>
+      <if test="payChannel != null">
+        pay_channel,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="isReceive != null">
+        is_receive,
+      </if>
+      <if test="ext1 != null">
+        ext_1,
+      </if>
+      <if test="remark2 != null">
+        remark_2,
+      </if>
+      <if test="deviceCode != null">
+        device_code,
+      </if>
+      <if test="payWayMoney != null">
+        pay_way_money,
+      </if>
+      <if test="getMoney != null">
+        get_money,
+      </if>
+      <if test="backMoney != null">
+        back_money,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="creatorType != null">
+        creator_type,
+      </if>
+      <if test="cancelTradedMark != null">
+        cancel_traded_mark,
+      </if>
+      <if test="orderAssessmentStar != null">
+        order_assessment_star,
+      </if>
+      <if test="autoDeduct != null">
+        auto_deduct,
+      </if>
+      <if test="otherSystemOrderNo != null">
+        other_system_order_no,
+      </if>
+      <if test="payStatus != null">
+        pay_status,
+      </if>
+      <if test="parentStoreId != null">
+        parent_store_id,
+      </if>
+      <if test="preAmount != null">
+        pre_amount,
+      </if>
+      <if test="payFrom != null">
+        pay_from,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="carCheckId != null">
+        car_check_id,
+      </if>
+      <if test="rework != null">
+        rework,
+      </if>
+      <if test="transactionId != null">
+        transaction_id,
+      </if>
+      <if test="outTradeNo != null">
+        out_trade_no,
+      </if>
+      <if test="preTransactionId != null">
+        pre_transaction_id,
+      </if>
+      <if test="preOutTradeNo != null">
+        pre_out_trade_no,
+      </if>
+      <if test="delayRepayId != null">
+        delay_repay_id,
+      </if>
+      <if test="oldOrder != null">
+        old_order,
+      </if>
+      <if test="entryTime != null">
+        entry_time,
+      </if>
+      <if test="finishTime != null">
+        finish_time,
+      </if>
+      <if test="memberDesc != null">
+        member_desc,
+      </if>
+      <if test="getStaffId != null">
+        get_staff_id,
+      </if>
+      <if test="outStaffId != null">
+        out_staff_id,
+      </if>
+      <if test="refundStatus != null">
+        refund_status,
+      </if>
+      <if test="scanId != null">
+        scan_id,
+      </if>
+      <if test="isOnlineWay != null">
+        is_online_way,
+      </if>
+      <if test="settleWay != null">
+        settle_way,
+      </if>
+      <if test="ext2 != null">
+        ext2,
+      </if>
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="carKeyNo != null">
+        car_key_no,
+      </if>
+      <if test="receptionId != null">
+        reception_id,
+      </if>
+      <if test="flowId != null">
+        flow_id,
+      </if>
+      <if test="qtStatus != null">
+        qt_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="seller != null">
+        #{seller,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalMoney != null">
+        #{totalMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="actualMoney != null">
+        #{actualMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="workAreaId != null">
+        #{workAreaId,jdbcType=BIGINT},
+      </if>
+      <if test="carNo != null">
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null">
+        #{payWay,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStaffId != null">
+        #{orderStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isComment != null">
+        #{isComment,jdbcType=BIT},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="bookingTime != null">
+        #{bookingTime,jdbcType=CHAR},
+      </if>
+      <if test="payChannel != null">
+        #{payChannel,jdbcType=CHAR},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="isReceive != null">
+        #{isReceive,jdbcType=BIT},
+      </if>
+      <if test="ext1 != null">
+        #{ext1,jdbcType=BIGINT},
+      </if>
+      <if test="remark2 != null">
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCode != null">
+        #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payWayMoney != null">
+        #{payWayMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="getMoney != null">
+        #{getMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="backMoney != null">
+        #{backMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="creatorType != null">
+        #{creatorType,jdbcType=CHAR},
+      </if>
+      <if test="cancelTradedMark != null">
+        #{cancelTradedMark,jdbcType=CHAR},
+      </if>
+      <if test="orderAssessmentStar != null">
+        #{orderAssessmentStar,jdbcType=INTEGER},
+      </if>
+      <if test="autoDeduct != null">
+        #{autoDeduct,jdbcType=INTEGER},
+      </if>
+      <if test="otherSystemOrderNo != null">
+        #{otherSystemOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="parentStoreId != null">
+        #{parentStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="preAmount != null">
+        #{preAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="payFrom != null">
+        #{payFrom,jdbcType=INTEGER},
+      </if>
+      <if test="carId != null">
+        #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="carCheckId != null">
+        #{carCheckId,jdbcType=INTEGER},
+      </if>
+      <if test="rework != null">
+        #{rework,jdbcType=INTEGER},
+      </if>
+      <if test="transactionId != null">
+        #{transactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null">
+        #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="preTransactionId != null">
+        #{preTransactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="preOutTradeNo != null">
+        #{preOutTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="delayRepayId != null">
+        #{delayRepayId,jdbcType=BIGINT},
+      </if>
+      <if test="oldOrder != null">
+        #{oldOrder,jdbcType=SMALLINT},
+      </if>
+      <if test="entryTime != null">
+        #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null">
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberDesc != null">
+        #{memberDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="getStaffId != null">
+        #{getStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="outStaffId != null">
+        #{outStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="refundStatus != null">
+        #{refundStatus,jdbcType=CHAR},
+      </if>
+      <if test="scanId != null">
+        #{scanId,jdbcType=INTEGER},
+      </if>
+      <if test="isOnlineWay != null">
+        #{isOnlineWay,jdbcType=INTEGER},
+      </if>
+      <if test="settleWay != null">
+        #{settleWay,jdbcType=SMALLINT},
+      </if>
+      <if test="ext2 != null">
+        #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null">
+        #{cardId,jdbcType=BIGINT},
+      </if>
+      <if test="carKeyNo != null">
+        #{carKeyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receptionId != null">
+        #{receptionId,jdbcType=BIGINT},
+      </if>
+      <if test="flowId != null">
+        #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="qtStatus != null">
+        #{qtStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.Order">
+    update erp_work_order
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="seller != null">
+        seller = #{seller,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalMoney != null">
+        total_money = #{totalMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="actualMoney != null">
+        actual_money = #{actualMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        erp_member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="workAreaId != null">
+        erp_work_area_id = #{workAreaId,jdbcType=BIGINT},
+      </if>
+      <if test="carNo != null">
+        car_no = #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null">
+        pay_way = #{payWay,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderStaffId != null">
+        order_staff_id = #{orderStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isComment != null">
+        is_comment = #{isComment,jdbcType=BIT},
+      </if>
+      <if test="channel != null">
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="bookingTime != null">
+        booking_time = #{bookingTime,jdbcType=CHAR},
+      </if>
+      <if test="payChannel != null">
+        pay_channel = #{payChannel,jdbcType=CHAR},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=CHAR},
+      </if>
+      <if test="isReceive != null">
+        is_receive = #{isReceive,jdbcType=BIT},
+      </if>
+      <if test="ext1 != null">
+        ext_1 = #{ext1,jdbcType=BIGINT},
+      </if>
+      <if test="remark2 != null">
+        remark_2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceCode != null">
+        device_code = #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payWayMoney != null">
+        pay_way_money = #{payWayMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="getMoney != null">
+        get_money = #{getMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="backMoney != null">
+        back_money = #{backMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=BIGINT},
+      </if>
+      <if test="creatorType != null">
+        creator_type = #{creatorType,jdbcType=CHAR},
+      </if>
+      <if test="cancelTradedMark != null">
+        cancel_traded_mark = #{cancelTradedMark,jdbcType=CHAR},
+      </if>
+      <if test="orderAssessmentStar != null">
+        order_assessment_star = #{orderAssessmentStar,jdbcType=INTEGER},
+      </if>
+      <if test="autoDeduct != null">
+        auto_deduct = #{autoDeduct,jdbcType=INTEGER},
+      </if>
+      <if test="otherSystemOrderNo != null">
+        other_system_order_no = #{otherSystemOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="payStatus != null">
+        pay_status = #{payStatus,jdbcType=INTEGER},
+      </if>
+      <if test="parentStoreId != null">
+        parent_store_id = #{parentStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="preAmount != null">
+        pre_amount = #{preAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="payFrom != null">
+        pay_from = #{payFrom,jdbcType=INTEGER},
+      </if>
+      <if test="carId != null">
+        car_id = #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="carCheckId != null">
+        car_check_id = #{carCheckId,jdbcType=INTEGER},
+      </if>
+      <if test="rework != null">
+        rework = #{rework,jdbcType=INTEGER},
+      </if>
+      <if test="transactionId != null">
+        transaction_id = #{transactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null">
+        out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="preTransactionId != null">
+        pre_transaction_id = #{preTransactionId,jdbcType=VARCHAR},
+      </if>
+      <if test="preOutTradeNo != null">
+        pre_out_trade_no = #{preOutTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="delayRepayId != null">
+        delay_repay_id = #{delayRepayId,jdbcType=BIGINT},
+      </if>
+      <if test="oldOrder != null">
+        old_order = #{oldOrder,jdbcType=SMALLINT},
+      </if>
+      <if test="entryTime != null">
+        entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishTime != null">
+        finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberDesc != null">
+        member_desc = #{memberDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="getStaffId != null">
+        get_staff_id = #{getStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="outStaffId != null">
+        out_staff_id = #{outStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="refundStatus != null">
+        refund_status = #{refundStatus,jdbcType=CHAR},
+      </if>
+      <if test="scanId != null">
+        scan_id = #{scanId,jdbcType=INTEGER},
+      </if>
+      <if test="isOnlineWay != null">
+        is_online_way = #{isOnlineWay,jdbcType=INTEGER},
+      </if>
+      <if test="settleWay != null">
+        settle_way = #{settleWay,jdbcType=SMALLINT},
+      </if>
+      <if test="ext2 != null">
+        ext2 = #{ext2,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null">
+        card_id = #{cardId,jdbcType=BIGINT},
+      </if>
+      <if test="carKeyNo != null">
+        car_key_no = #{carKeyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="receptionId != null">
+        reception_id = #{receptionId,jdbcType=BIGINT},
+      </if>
+      <if test="flowId != null">
+        flow_id = #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="qtStatus != null">
+        qt_status = #{qtStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="queryNonPayOrder" resultType="java.lang.Integer">
+    select count(*)
+    from erp_work_order
+    where erp_store_id = #{storeId}
+      <![CDATA[ and pay_status <> 1 and pay_status <> 4 and status <> 4 ]]>
+      and order_type in (1,8)
+  </select>
+
+  <select id="queryOrderByStatus" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from erp_work_order
+    where erp_store_id = #{storeId}
+      and status = #{status}
+  </select>
+
+  <select id="queryOrderByCondition" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from erp_work_order
+    where erp_store_id = #{storeId}
+      and status = #{status}
+      and erp_work_area_id = #{workAreaId}
+  </select>
+
+</mapper>

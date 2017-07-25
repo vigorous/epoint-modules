@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.tmsg.dao.StoreIndustryMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.tmsg.entity.StoreIndustry">
+    <id column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="primary_industry_code" jdbcType="INTEGER" property="primaryIndustryCode" />
+    <result column="secondary_industry_code" jdbcType="INTEGER" property="secondaryIndustryCode" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    store_id, primary_industry_code, secondary_industry_code, STATUS, update_time, create_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wtp_store_industry
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from wtp_store_industry
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.tmsg.entity.StoreIndustry" useGeneratedKeys="true">
+    insert into wtp_store_industry
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="primaryIndustryCode != null">
+        primary_industry_code,
+      </if>
+      <if test="secondaryIndustryCode != null">
+        secondary_industry_code,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="primaryIndustryCode != null">
+        #{primaryIndustryCode,jdbcType=INTEGER},
+      </if>
+      <if test="secondaryIndustryCode != null">
+        #{secondaryIndustryCode,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.tmsg.entity.StoreIndustry">
+    update wtp_store_industry
+    <set>
+      <if test="primaryIndustryCode != null">
+        primary_industry_code = #{primaryIndustryCode,jdbcType=INTEGER},
+      </if>
+      <if test="secondaryIndustryCode != null">
+        secondary_industry_code = #{secondaryIndustryCode,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </update>
+</mapper>

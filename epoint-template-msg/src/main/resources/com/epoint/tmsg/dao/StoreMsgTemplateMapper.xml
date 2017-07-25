@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.tmsg.dao.StoreMsgTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.tmsg.entity.StoreMsgTemplate">
+    <id column="template_id" jdbcType="VARCHAR" property="templateId" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="industry_code" jdbcType="INTEGER" property="industryCode" />
+    <result column="template_id_short" jdbcType="VARCHAR" property="templateIdShort" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    template_id, store_id, industry_code, template_id_short, status, update_time, create_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wtp_store_msg_template
+    where template_id = #{templateId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.String">
+    delete from wtp_store_msg_template
+    where template_id = #{templateId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.tmsg.entity.StoreMsgTemplate" useGeneratedKeys="true">
+    insert into wtp_store_msg_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="industryCode != null">
+        industry_code,
+      </if>
+      <if test="templateIdShort != null">
+        template_id_short,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="templateId != null">
+        #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="industryCode != null">
+        #{industryCode,jdbcType=INTEGER},
+      </if>
+      <if test="templateIdShort != null">
+        #{templateIdShort,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.tmsg.entity.StoreMsgTemplate">
+    update wtp_store_msg_template
+    <set>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="industryCode != null">
+        industry_code = #{industryCode,jdbcType=INTEGER},
+      </if>
+      <if test="templateIdShort != null">
+        template_id_short = #{templateIdShort,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where template_id = #{templateId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByStoreId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wtp_store_msg_template
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </select>
+
+
+
+  <select id="selectByStoreIdAndShortTemplateId"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wtp_store_msg_template
+    where store_id = #{storeId,jdbcType=BIGINT} AND  template_id_short = #{templateIdShort,jdbcType=VARCHAR}
+  </select>
+
+  <select id="joinSelectByStoreId"  resultType="com.epoint.tmsg.dto.StoreMsgTemplateDto">
+    SELECT
+        a.template_id_short AS templateIdShort,
+        a.title,
+        a.sub_title AS subTitle,
+        b.status
+    FROM
+        wtp_msg_template a
+    LEFT JOIN (
+        SELECT
+            *
+        FROM
+            wtp_store_msg_template
+        WHERE
+            store_id = #{storeId,jdbcType=BIGINT}
+    ) b ON a.template_id_short = b.template_id_short
+  </select>
+</mapper>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.book.dao.BookDaySettingMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.book.entity.BookDaySetting">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="book_date" jdbcType="VARCHAR" property="bookDate" />
+    <result column="week" jdbcType="INTEGER" property="week" />
+    <result column="max_num" jdbcType="INTEGER" property="maxNum" />
+    <result column="act_max_num" jdbcType="INTEGER" property="actMaxNum" />
+    <result column="is_week" jdbcType="INTEGER" property="isWeek" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, store_id, book_date, max_num, act_max_num, is_week,week, update_time, create_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wx_book_day_setting
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from wx_book_day_setting
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.book.entity.BookDaySetting" useGeneratedKeys="true">
+    insert into wx_book_day_setting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="bookDate != null">
+        book_date,
+      </if>
+      <if test="week != null">
+        week,
+      </if>
+      <if test="maxNum != null">
+        max_num,
+      </if>
+      <if test="actMaxNum != null">
+        act_max_num,
+      </if>
+      <if test="isWeek != null">
+        is_week,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="bookDate != null">
+        #{bookDate,jdbcType=VARCHAR},
+      </if>
+      <if test="week != null">
+        #{week,jdbcType=INTEGER},
+      </if>
+      <if test="maxNum != null">
+        #{maxNum,jdbcType=INTEGER},
+      </if>
+      <if test="actMaxNum != null">
+        #{actMaxNum,jdbcType=INTEGER},
+      </if>
+      <if test="isWeek != null">
+        #{isWeek,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.book.entity.BookDaySetting">
+    update wx_book_day_setting
+    <set>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="bookDate != null">
+        book_date = #{bookDate,jdbcType=VARCHAR},
+      </if>
+      <if test="week != null">
+        week = #{week,jdbcType=INTEGER},
+      </if>
+      <if test="maxNum != null">
+        max_num = #{maxNum,jdbcType=INTEGER},
+      </if>
+      <if test="actMaxNum != null">
+        act_max_num = #{actMaxNum,jdbcType=INTEGER},
+      </if>
+      <if test="isWeek != null">
+        is_week = #{isWeek,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByBookDate"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wx_book_day_setting
+    where
+         store_id = #{storeId,jdbcType=BIGINT}
+    AND  book_date = #{bookDate,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByMonth"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wx_book_day_setting
+    where
+         store_id = #{storeId,jdbcType=BIGINT}
+    AND  book_date LIKE  CONCAT(#{bookDate,jdbcType=VARCHAR},'%')
+  </select>
+
+
+  <update id="updateByBookDate" parameterType="com.epoint.book.entity.BookDaySetting">
+       update wx_book_day_setting
+         SET
+          <if test="maxNum != null">
+            max_num = #{maxNum,jdbcType=INTEGER},
+          </if>
+          <if test="actMaxNum != null">
+            act_max_num = act_max_num + 1,
+          </if>
+          <if test="isWeek != null">
+            is_week = #{isWeek,jdbcType=INTEGER},
+          </if>
+           update_time = #{updateTime,jdbcType=TIMESTAMP}
+      where
+           store_id = #{storeId,jdbcType=BIGINT}
+      AND  book_date = #{bookDate,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByWeek" parameterType="com.epoint.book.entity.BookDaySetting">
+    update wx_book_day_setting
+    SET
+    <if test="maxNum != null">
+      max_num = #{maxNum,jdbcType=INTEGER},
+    </if>
+    update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where
+      store_id = #{storeId,jdbcType=BIGINT}
+      AND  is_week = #{isWeek,jdbcType=INTEGER}
+      AND  week = #{week,jdbcType=INTEGER}
+  </update>
+</mapper>

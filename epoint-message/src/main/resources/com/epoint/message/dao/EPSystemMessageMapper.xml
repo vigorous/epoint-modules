@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.message.dao.EPSystemMessageMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.message.entity.SystemMessage">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="staff_id" jdbcType="BIGINT" property="staffId" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="data_id" jdbcType="BIGINT" property="dataId" />
+    <result column="car_no" jdbcType="VARCHAR" property="carNo" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="extras" jdbcType="VARCHAR" property="extras" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, type, staff_id, store_id, status, create_time, data_id, car_no, update_time, 
+    extras, member_id
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from erp_system_message
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_system_message
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.message.entity.SystemMessage" useGeneratedKeys="true">
+    insert into erp_system_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="staffId != null">
+        staff_id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="dataId != null">
+        data_id,
+      </if>
+      <if test="carNo != null">
+        car_no,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="extras != null">
+        extras,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataId != null">
+        #{dataId,jdbcType=BIGINT},
+      </if>
+      <if test="carNo != null">
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extras != null">
+        #{extras,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.message.entity.SystemMessage">
+    update erp_system_message
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="staffId != null">
+        staff_id = #{staffId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataId != null">
+        data_id = #{dataId,jdbcType=BIGINT},
+      </if>
+      <if test="carNo != null">
+        car_no = #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extras != null">
+        extras = #{extras,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.coupon.dao.CouponShareMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.coupon.entity.CouponShare">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="coupon_id" jdbcType="BIGINT" property="couponId" />
+    <result column="share_page_url" jdbcType="VARCHAR" property="sharePageUrl" />
+    <result column="share_store_id" jdbcType="BIGINT" property="shareStoreId"/>
+    <result column="share_title" jdbcType="VARCHAR" property="shareTitle" />
+    <result column="status" jdbcType="SMALLINT" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, member_id, mobile, coupon_id, share_page_url, share_title,share_store_id,status, create_time, update_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_coupon_share
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_coupon_share
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.epoint.coupon.entity.CouponShare" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    insert into erp_coupon_share
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="couponId != null">
+        coupon_id,
+      </if>
+      <if test="sharePageUrl != null">
+        share_page_url,
+      </if>
+      <if test="shareTitle != null">
+        share_title,
+      </if>
+      <if test="shareStoreId != null">
+        share_store_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="couponId != null">
+        #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="sharePageUrl != null">
+        #{sharePageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="shareTitle != null">
+        #{shareTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="shareStoreId != null">
+        #{shareStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.coupon.entity.CouponShare">
+    update erp_coupon_share
+    <set>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="couponId != null">
+        coupon_id = #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="sharePageUrl != null">
+        share_page_url = #{sharePageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="shareTitle != null">
+        share_title = #{shareTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="shareStoreId != null">
+        share_store_id = #{shareStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

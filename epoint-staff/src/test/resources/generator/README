@@ -1,0 +1,4 @@
+自动生成entity,dao, mapper xml 步骤:
+1.修改generator-config.xml中mysql-connector-java-5.1.36.jar绝对路径
+2.运行mvn命令可以自动生成相应的entity,dao, mapper xml
+mvn mybatis-generator:generate

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="epoint-base" />
+        <module name="epoint-book" />
+        <module name="epoint-car" />
+        <module name="epoint-car-check" />
+        <module name="epoint-coupon" />
+        <module name="epoint-flow" />
+        <module name="epoint-goods" />
+        <module name="epoint-member" />
+        <module name="epoint-message" />
+        <module name="epoint-order" />
+        <module name="epoint-reception" />
+        <module name="epoint-role" />
+        <module name="epoint-setting" />
+        <module name="epoint-staff" />
+        <module name="epoint-store" />
+        <module name="epoint-template-msg" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="epoint-base" target="1.5" />
+      <module name="epoint-book" target="1.8" />
+      <module name="epoint-car" target="1.8" />
+      <module name="epoint-car-check" target="1.8" />
+      <module name="epoint-coupon" target="1.8" />
+      <module name="epoint-flow" target="1.8" />
+      <module name="epoint-goods" target="1.8" />
+      <module name="epoint-member" target="1.8" />
+      <module name="epoint-message" target="1.8" />
+      <module name="epoint-modules" target="1.5" />
+      <module name="epoint-order" target="1.8" />
+      <module name="epoint-reception" target="1.8" />
+      <module name="epoint-role" target="1.8" />
+      <module name="epoint-setting" target="1.5" />
+      <module name="epoint-staff" target="1.8" />
+      <module name="epoint-store" target="1.5" />
+      <module name="epoint-template-msg" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPOrderCreditDiscountMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.OrderCreditDiscount">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="item_type" jdbcType="CHAR" property="itemType" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="total_amount" jdbcType="DOUBLE" property="totalAmount" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="erp_work_order_id" jdbcType="BIGINT" property="workOrderId" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, item_id, item_type, type, amount, total_amount, status, erp_work_order_id, erp_store_id, 
+    create_time, update_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_order_credit_discount
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_order_credit_discount
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.OrderCreditDiscount" useGeneratedKeys="true">
+    insert into erp_order_credit_discount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="itemType != null">
+        item_type,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="totalAmount != null">
+        total_amount,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="workOrderId != null">
+        erp_work_order_id,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemType != null">
+        #{itemType,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="totalAmount != null">
+        #{totalAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="workOrderId != null">
+        #{workOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.OrderCreditDiscount">
+    update erp_order_credit_discount
+    <set>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="itemType != null">
+        item_type = #{itemType,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="totalAmount != null">
+        total_amount = #{totalAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="workOrderId != null">
+        erp_work_order_id = #{workOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

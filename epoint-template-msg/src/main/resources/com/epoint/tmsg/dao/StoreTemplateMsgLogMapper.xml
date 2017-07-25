@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.tmsg.dao.StoreTemplateMsgLogMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.tmsg.entity.StoreTemplateMsgLog">
+    <id column="msg_id" jdbcType="VARCHAR" property="msgId" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="industry_code" jdbcType="INTEGER" property="industryCode" />
+    <result column="template_id_short" jdbcType="VARCHAR" property="templateIdShort" />
+    <result column="template_id" jdbcType="VARCHAR" property="templateId" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="from_user_id" jdbcType="VARCHAR" property="fromUserId" />
+    <result column="to_user_open_id" jdbcType="VARCHAR" property="toUserOpenId" />
+    <result column="msg_url" jdbcType="VARCHAR" property="msgUrl" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="page_path" jdbcType="VARCHAR" property="pagePath" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="status_desc" jdbcType="VARCHAR" property="statusDesc" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    msg_id, member_id, industry_code, template_id_short, template_id, store_id, from_user_id, 
+    to_user_open_id, msg_url, app_id, page_path, content, STATUS, status_desc, update_time, 
+    create_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wtp_store_template_msg_log
+    where msg_id = #{msgId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.String">
+    delete from wtp_store_template_msg_log
+    where msg_id = #{msgId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.tmsg.entity.StoreTemplateMsgLog" useGeneratedKeys="true">
+    insert into wtp_store_template_msg_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="msgId != null">
+        msg_id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="industryCode != null">
+        industry_code,
+      </if>
+      <if test="templateIdShort != null">
+        template_id_short,
+      </if>
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="fromUserId != null">
+        from_user_id,
+      </if>
+      <if test="toUserOpenId != null">
+        to_user_open_id,
+      </if>
+      <if test="msgUrl != null">
+        msg_url,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="pagePath != null">
+        page_path,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="statusDesc != null">
+        status_desc,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="msgId != null">
+        #{msgId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="industryCode != null">
+        #{industryCode,jdbcType=INTEGER},
+      </if>
+      <if test="templateIdShort != null">
+        #{templateIdShort,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="fromUserId != null">
+        #{fromUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="toUserOpenId != null">
+        #{toUserOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="msgUrl != null">
+        #{msgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="pagePath != null">
+        #{pagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="statusDesc != null">
+        #{statusDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.tmsg.entity.StoreTemplateMsgLog">
+    update wtp_store_template_msg_log
+    <set>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="industryCode != null">
+        industry_code = #{industryCode,jdbcType=INTEGER},
+      </if>
+      <if test="templateIdShort != null">
+        template_id_short = #{templateIdShort,jdbcType=VARCHAR},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="fromUserId != null">
+        from_user_id = #{fromUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="toUserOpenId != null">
+        to_user_open_id = #{toUserOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="msgUrl != null">
+        msg_url = #{msgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="pagePath != null">
+        page_path = #{pagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="statusDesc != null">
+        status_desc = #{statusDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where msg_id = #{msgId,jdbcType=VARCHAR}
+  </update>
+</mapper>

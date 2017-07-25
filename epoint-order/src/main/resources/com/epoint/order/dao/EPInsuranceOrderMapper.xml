@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPInsuranceOrderMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.InsuranceOrder">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="work_order_id" jdbcType="BIGINT" property="workOrderId" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="first_time" jdbcType="TIMESTAMP" property="firstTime" />
+    <result column="operate_type" jdbcType="BIT" property="operateType" />
+    <result column="chassis_no" jdbcType="VARCHAR" property="chassisNo" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="member_company" jdbcType="VARCHAR" property="memberCompany" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, work_order_id, start_time, end_time, company_id, first_time, operate_type, chassis_no, 
+    erp_store_id, member_company
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_insurance_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_insurance_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.InsuranceOrder" useGeneratedKeys="true">
+    insert into erp_insurance_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="workOrderId != null">
+        work_order_id,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="firstTime != null">
+        first_time,
+      </if>
+      <if test="operateType != null">
+        operate_type,
+      </if>
+      <if test="chassisNo != null">
+        chassis_no,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="memberCompany != null">
+        member_company,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="workOrderId != null">
+        #{workOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="firstTime != null">
+        #{firstTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateType != null">
+        #{operateType,jdbcType=BIT},
+      </if>
+      <if test="chassisNo != null">
+        #{chassisNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="memberCompany != null">
+        #{memberCompany,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.InsuranceOrder">
+    update erp_insurance_order
+    <set>
+      <if test="workOrderId != null">
+        work_order_id = #{workOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="firstTime != null">
+        first_time = #{firstTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateType != null">
+        operate_type = #{operateType,jdbcType=BIT},
+      </if>
+      <if test="chassisNo != null">
+        chassis_no = #{chassisNo,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="memberCompany != null">
+        member_company = #{memberCompany,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

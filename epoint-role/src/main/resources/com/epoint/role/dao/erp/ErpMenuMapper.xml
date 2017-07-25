@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.role.dao.erp.ErpMenuMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.role.erp.entity.ErpMenu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="menu" jdbcType="VARCHAR" property="menu" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="old_menu_role" jdbcType="CHAR" property="oldMenuRole" />
+    <result column="old_url_role" jdbcType="VARCHAR" property="oldUrlRole" />
+    <result column="menu_type" jdbcType="CHAR" property="menuType" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="style" jdbcType="VARCHAR" property="style" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="menu_role" jdbcType="VARCHAR" property="menuRole" />
+    <result column="url_role" jdbcType="VARCHAR" property="urlRole" />
+    <result column="old_url" jdbcType="VARCHAR" property="oldUrl" />
+    <result column="page_type" jdbcType="BIGINT" property="pageType" />
+    <result column="is_public" jdbcType="INTEGER" property="isPublic" />
+    <result column="chain_menu" jdbcType="INTEGER" property="chainMenu" />
+    <result column="manage_type" jdbcType="INTEGER" property="manageType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, menu, img, parent_id, status, old_menu_role, old_url_role, menu_type, level, 
+    sort, style, url, menu_role, url_role, old_url, page_type, is_public, chain_menu, 
+    manage_type
+  </sql>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from erp_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.role.erp.entity.ErpMenu" useGeneratedKeys="true">
+    insert into erp_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="menu != null">
+        menu,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="oldMenuRole != null">
+        old_menu_role,
+      </if>
+      <if test="oldUrlRole != null">
+        old_url_role,
+      </if>
+      <if test="menuType != null">
+        menu_type,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="style != null">
+        style,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="menuRole != null">
+        menu_role,
+      </if>
+      <if test="urlRole != null">
+        url_role,
+      </if>
+      <if test="oldUrl != null">
+        old_url,
+      </if>
+      <if test="pageType != null">
+        page_type,
+      </if>
+      <if test="isPublic != null">
+        is_public,
+      </if>
+      <if test="chainMenu != null">
+        chain_menu,
+      </if>
+      <if test="manageType != null">
+        manage_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="menu != null">
+        #{menu,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="oldMenuRole != null">
+        #{oldMenuRole,jdbcType=CHAR},
+      </if>
+      <if test="oldUrlRole != null">
+        #{oldUrlRole,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null">
+        #{menuType,jdbcType=CHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="style != null">
+        #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRole != null">
+        #{menuRole,jdbcType=VARCHAR},
+      </if>
+      <if test="urlRole != null">
+        #{urlRole,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUrl != null">
+        #{oldUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pageType != null">
+        #{pageType,jdbcType=BIGINT},
+      </if>
+      <if test="isPublic != null">
+        #{isPublic,jdbcType=INTEGER},
+      </if>
+      <if test="chainMenu != null">
+        #{chainMenu,jdbcType=INTEGER},
+      </if>
+      <if test="manageType != null">
+        #{manageType,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.role.erp.entity.ErpMenu">
+    update erp_menu
+    <set>
+      <if test="menu != null">
+        menu = #{menu,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="oldMenuRole != null">
+        old_menu_role = #{oldMenuRole,jdbcType=CHAR},
+      </if>
+      <if test="oldUrlRole != null">
+        old_url_role = #{oldUrlRole,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null">
+        menu_type = #{menuType,jdbcType=CHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="style != null">
+        style = #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="menuRole != null">
+        menu_role = #{menuRole,jdbcType=VARCHAR},
+      </if>
+      <if test="urlRole != null">
+        url_role = #{urlRole,jdbcType=VARCHAR},
+      </if>
+      <if test="oldUrl != null">
+        old_url = #{oldUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pageType != null">
+        page_type = #{pageType,jdbcType=BIGINT},
+      </if>
+      <if test="isPublic != null">
+        is_public = #{isPublic,jdbcType=INTEGER},
+      </if>
+      <if test="chainMenu != null">
+        chain_menu = #{chainMenu,jdbcType=INTEGER},
+      </if>
+      <if test="manageType != null">
+        manage_type = #{manageType,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

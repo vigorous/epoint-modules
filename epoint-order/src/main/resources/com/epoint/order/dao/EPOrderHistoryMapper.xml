@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPOrderHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.OrderHistory">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="erp_member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="car_no" jdbcType="VARCHAR" property="carNo" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_count" jdbcType="DOUBLE" property="itemCount" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="pay_way" jdbcType="VARCHAR" property="payWay" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="sell_staff" jdbcType="VARCHAR" property="sellStaff" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, erp_member_id, erp_store_id, order_no, name, mobile, car_no, item_name, item_count, 
+    amount, create_time, order_time, status, pay_way, channel, remark, sell_staff
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_work_order_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_work_order_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.OrderHistory" useGeneratedKeys="true">
+    insert into erp_work_order_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="memberId != null">
+        erp_member_id,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="carNo != null">
+        car_no,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemCount != null">
+        item_count,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="orderTime != null">
+        order_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="payWay != null">
+        pay_way,
+      </if>
+      <if test="channel != null">
+        channel,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="sellStaff != null">
+        sell_staff,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="carNo != null">
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCount != null">
+        #{itemCount,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null">
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sellStaff != null">
+        #{sellStaff,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.OrderHistory">
+    update erp_work_order_history
+    <set>
+      <if test="memberId != null">
+        erp_member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="carNo != null">
+        car_no = #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCount != null">
+        item_count = #{itemCount,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null">
+        pay_way = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null">
+        channel = #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sellStaff != null">
+        sell_staff = #{sellStaff,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

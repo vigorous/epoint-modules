@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/epoint-base/epoint-base.iml" filepath="$PROJECT_DIR$/epoint-base/epoint-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-book/epoint-book.iml" filepath="$PROJECT_DIR$/epoint-book/epoint-book.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-car/epoint-car.iml" filepath="$PROJECT_DIR$/epoint-car/epoint-car.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-car-check/epoint-car-check.iml" filepath="$PROJECT_DIR$/epoint-car-check/epoint-car-check.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-coupon/epoint-coupon.iml" filepath="$PROJECT_DIR$/epoint-coupon/epoint-coupon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-flow/epoint-flow.iml" filepath="$PROJECT_DIR$/epoint-flow/epoint-flow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-goods/epoint-goods.iml" filepath="$PROJECT_DIR$/epoint-goods/epoint-goods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-member/epoint-member.iml" filepath="$PROJECT_DIR$/epoint-member/epoint-member.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-message/epoint-message.iml" filepath="$PROJECT_DIR$/epoint-message/epoint-message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-modules.iml" filepath="$PROJECT_DIR$/epoint-modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-order/epoint-order.iml" filepath="$PROJECT_DIR$/epoint-order/epoint-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-reception/epoint-reception.iml" filepath="$PROJECT_DIR$/epoint-reception/epoint-reception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-role/epoint-role.iml" filepath="$PROJECT_DIR$/epoint-role/epoint-role.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-setting/epoint-setting.iml" filepath="$PROJECT_DIR$/epoint-setting/epoint-setting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-staff/epoint-staff.iml" filepath="$PROJECT_DIR$/epoint-staff/epoint-staff.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-store/epoint-store.iml" filepath="$PROJECT_DIR$/epoint-store/epoint-store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/epoint-template-msg/epoint-template-msg.iml" filepath="$PROJECT_DIR$/epoint-template-msg/epoint-template-msg.iml" />
+    </modules>
+  </component>
+</project>

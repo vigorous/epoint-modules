@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPRefundOrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.RefundOrderItem">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <id column="erp_work_order_id" jdbcType="BIGINT" property="workOrderId" />
+    <id column="refund_order_id" jdbcType="BIGINT" property="refundOrderId" />
+    <result column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="amount" jdbcType="DOUBLE" property="amount" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="discount" jdbcType="DOUBLE" property="discount" />
+    <result column="sale_ids" jdbcType="VARCHAR" property="saleIds" />
+    <result column="worker_ids" jdbcType="VARCHAR" property="workerIds" />
+    <result column="item_actual_money" jdbcType="DOUBLE" property="itemActualMoney" />
+    <result column="work_hour" jdbcType="DOUBLE" property="workHour" />
+    <result column="work_hour_price" jdbcType="DOUBLE" property="workHourPrice" />
+    <result column="work_hour_level_id" jdbcType="BIGINT" property="workHourLevelId" />
+    <result column="work_hour_car_range" jdbcType="VARCHAR" property="workHourCarRange" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="erp_workarea_id" jdbcType="BIGINT" property="workareaId" />
+    <result column="price_type" jdbcType="INTEGER" property="priceType" />
+    <result column="parent_store_id" jdbcType="INTEGER" property="parentStoreId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="rework" jdbcType="INTEGER" property="rework" />
+    <result column="cost_price" jdbcType="DOUBLE" property="costPrice" />
+    <result column="back_company" jdbcType="DOUBLE" property="backCompany" />
+    <result column="back_member" jdbcType="DOUBLE" property="backMember" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, erp_work_order_id, refund_order_id, item_id, type, erp_store_id, amount, price, 
+    discount, sale_ids, worker_ids, item_actual_money, work_hour, work_hour_price, work_hour_level_id, 
+    work_hour_car_range, status, begin_time, end_time, erp_workarea_id, price_type, parent_store_id, 
+    create_time, rework, cost_price, back_company, back_member
+  </sql>
+  <select id="selectById" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_refund_order_item
+    where id = #{id,jdbcType=BIGINT}
+      and erp_work_order_id = #{workOrderId,jdbcType=BIGINT}
+      and refund_order_id = #{refundOrderId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="map">
+    delete from erp_refund_order_item
+    where id = #{id,jdbcType=BIGINT}
+      and erp_work_order_id = #{workOrderId,jdbcType=BIGINT}
+      and refund_order_id = #{refundOrderId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.RefundOrderItem" useGeneratedKeys="true">
+    insert into erp_refund_order_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="workOrderId != null">
+        erp_work_order_id,
+      </if>
+      <if test="refundOrderId != null">
+        refund_order_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="discount != null">
+        discount,
+      </if>
+      <if test="saleIds != null">
+        sale_ids,
+      </if>
+      <if test="workerIds != null">
+        worker_ids,
+      </if>
+      <if test="itemActualMoney != null">
+        item_actual_money,
+      </if>
+      <if test="workHour != null">
+        work_hour,
+      </if>
+      <if test="workHourPrice != null">
+        work_hour_price,
+      </if>
+      <if test="workHourLevelId != null">
+        work_hour_level_id,
+      </if>
+      <if test="workHourCarRange != null">
+        work_hour_car_range,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="workareaId != null">
+        erp_workarea_id,
+      </if>
+      <if test="priceType != null">
+        price_type,
+      </if>
+      <if test="parentStoreId != null">
+        parent_store_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="rework != null">
+        rework,
+      </if>
+      <if test="costPrice != null">
+        cost_price,
+      </if>
+      <if test="backCompany != null">
+        back_company,
+      </if>
+      <if test="backMember != null">
+        back_member,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="workOrderId != null">
+        #{workOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="refundOrderId != null">
+        #{refundOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="saleIds != null">
+        #{saleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="workerIds != null">
+        #{workerIds,jdbcType=VARCHAR},
+      </if>
+      <if test="itemActualMoney != null">
+        #{itemActualMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="workHour != null">
+        #{workHour,jdbcType=DOUBLE},
+      </if>
+      <if test="workHourPrice != null">
+        #{workHourPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="workHourLevelId != null">
+        #{workHourLevelId,jdbcType=BIGINT},
+      </if>
+      <if test="workHourCarRange != null">
+        #{workHourCarRange,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workareaId != null">
+        #{workareaId,jdbcType=BIGINT},
+      </if>
+      <if test="priceType != null">
+        #{priceType,jdbcType=INTEGER},
+      </if>
+      <if test="parentStoreId != null">
+        #{parentStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rework != null">
+        #{rework,jdbcType=INTEGER},
+      </if>
+      <if test="costPrice != null">
+        #{costPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="backCompany != null">
+        #{backCompany,jdbcType=DOUBLE},
+      </if>
+      <if test="backMember != null">
+        #{backMember,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.RefundOrderItem">
+    update erp_refund_order_item
+    <set>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="saleIds != null">
+        sale_ids = #{saleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="workerIds != null">
+        worker_ids = #{workerIds,jdbcType=VARCHAR},
+      </if>
+      <if test="itemActualMoney != null">
+        item_actual_money = #{itemActualMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="workHour != null">
+        work_hour = #{workHour,jdbcType=DOUBLE},
+      </if>
+      <if test="workHourPrice != null">
+        work_hour_price = #{workHourPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="workHourLevelId != null">
+        work_hour_level_id = #{workHourLevelId,jdbcType=BIGINT},
+      </if>
+      <if test="workHourCarRange != null">
+        work_hour_car_range = #{workHourCarRange,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workareaId != null">
+        erp_workarea_id = #{workareaId,jdbcType=BIGINT},
+      </if>
+      <if test="priceType != null">
+        price_type = #{priceType,jdbcType=INTEGER},
+      </if>
+      <if test="parentStoreId != null">
+        parent_store_id = #{parentStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rework != null">
+        rework = #{rework,jdbcType=INTEGER},
+      </if>
+      <if test="costPrice != null">
+        cost_price = #{costPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="backCompany != null">
+        back_company = #{backCompany,jdbcType=DOUBLE},
+      </if>
+      <if test="backMember != null">
+        back_member = #{backMember,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+      and erp_work_order_id = #{workOrderId,jdbcType=BIGINT}
+      and refund_order_id = #{refundOrderId,jdbcType=BIGINT}
+  </update>
+</mapper>

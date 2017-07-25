@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.reception.dao.AppReceptionListMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.reception.entity.AppReceptionList">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="car_no" jdbcType="VARCHAR" property="carNo" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="autowork_category_id" jdbcType="BIGINT" property="autoworkCategoryId" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="staff_id" jdbcType="BIGINT" property="staffId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="car_key_no" jdbcType="VARCHAR" property="carKeyNo" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="book_tag_name" jdbcType="VARCHAR" property="bookTagName" />
+    <result column="assign_order_staff_id" jdbcType="BIGINT" property="assignOrderStaffId" />
+    <result column="book_info_id" jdbcType="BIGINT" property="bookInfoId" />
+    <result column="car_check_id" jdbcType="BIGINT" property="carCheckId" />
+    <result column="assign_order_time" jdbcType="TIMESTAMP" property="assignOrderTime" />
+
+    <result column="assign_check_staff_id" jdbcType="BIGINT" property="assignCheckStaffId" />
+    <result column="assign_check_time" jdbcType="TIMESTAMP" property="assignCheckTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, car_no, member_id, autowork_category_id, description, staff_id, create_time, 
+    store_id,car_key_no,status,assign_order_staff_id,assign_order_time,book_tag_name,book_info_id,car_check_id,
+    assign_check_staff_id,assign_check_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_reception_list
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from app_reception_list
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.reception.entity.AppReceptionList" useGeneratedKeys="true">
+    insert into app_reception_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="carNo != null">
+        car_no,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="autoworkCategoryId != null">
+        autowork_category_id,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="staffId != null">
+        staff_id,
+      </if>
+      create_time,
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="carKeyNo != null">
+      	car_key_no,
+      </if>
+      <if test="status != null">
+      	status,
+      </if>
+      <if test="assignOrderStaffId != null">
+        assign_order_staff_id,
+      </if>
+      <if test="assignOrderTime != null">
+        assign_order_time,
+      </if>
+      <if test="bookTagName != null">
+        book_tag_name,
+      </if>
+      <if test="bookInfoId != null">
+        book_info_id,
+      </if>
+      <if test="carCheckId != null">
+        car_check_id,
+      </if>
+
+      <if test="assignCheckStaffId != null">
+        assign_check_staff_id,
+      </if>
+      <if test="assignCheckTime != null">
+        assign_check_time,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carNo != null">
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="autoworkCategoryId != null">
+        #{autoworkCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=BIGINT},
+      </if>
+      now(),
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="carKeyNo != null">
+      	#{carKeyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+      	#{status,jdbcType=INTEGER},
+      </if>
+      <if test="assignOrderStaffId != null">
+        #{assignOrderStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="assignOrderTime != null">
+       #{assignOrderTime},
+      </if>
+      <if test="bookTagName != null">
+        #{bookTagName},
+      </if>
+      <if test="bookInfoId != null">
+        #{bookInfoId},
+      </if>
+      <if test="carCheckId != null">
+        #{carCheckId},
+      </if>
+      <if test="assignCheckStaffId != null">
+          #{assignCheckStaffId},
+      </if>
+      <if test="assignCheckTime != null">
+          #{assignCheckTime},
+      </if>
+      <if test="carId != null">
+        #{carId},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.reception.entity.AppReceptionList">
+    update app_reception_list
+    <set>
+      <if test="carNo != null">
+        car_no = #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="autoworkCategoryId != null">
+        autowork_category_id = #{autoworkCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null">
+        staff_id = #{staffId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="carKeyNo != null">
+      	car_key_no = #{carKeyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+      	status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="assignOrderStaffId != null">
+        assign_order_staff_id = #{assignOrderStaffId,jdbcType=INTEGER},
+      </if>
+      <if test="assignOrderTime != null">
+        assign_order_time = #{assignOrderTime},
+      </if>
+      <if test="bookTagName != null">
+        book_tag_name = #{bookTagName},
+      </if>
+      <if test="bookInfoId != null">
+        book_info_id = #{bookInfoId},
+      </if>
+      <if test="carCheckId != null">
+        car_check_id = #{carCheckId},
+      </if>
+
+      <if test="assignCheckStaffId != null">
+          assign_check_staff_id = #{assignCheckStaffId},
+      </if>
+      <if test="assignCheckTime != null">
+          assign_check_time = #{assignCheckTime},
+      </if>
+
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="queryByMemberIdAndCarNo" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from app_reception_list
+    where car_no = #{carNo} and store_id = #{storeId} and member_id = #{memberId} and to_days(create_time) = to_days(now()) and status = '0'
+    order by create_time desc
+    limit 1
+  </select>
+  
+  <!-- app使用 -->
+  <select id="queryReceptionList"  parameterType="map" resultMap="BaseResultMap">
+  	select
+    <include refid="Base_Column_List" />
+    from app_reception_list
+    <where>
+    	store_id = #{storeId}
+    	<if test="carNo!=null and carNo!=''">
+    		and car_no = #{carNo}
+    	</if>    	
+    	<if test="memberId!=null">
+    		and member_id = #{memberId}
+    	</if>
+    	<if test='today!=null and today!="0"'>
+    		and to_days(create_time) = to_days(now())
+    	</if>
+    	<if test="status!=null">
+    		and status=#{status}
+    	</if>
+        <if test="receptionId!=null">
+          and id=#{receptionId}
+        </if>
+        <if test="staffId!=null">
+          and staff_id=#{staffId}
+        </if>
+    </where>
+    <if test="pageNum != null and pageSize != null">
+      limit  #{pageNum},#{pageSize}
+    </if>
+  </select>
+
+
+
+  <!-- app使用 日结统计查询接车单 -->
+  <select id="queryTodayReceptionList"  parameterType="map" resultType="com.epoint.reception.vo.AppReceptionListVo">
+    select
+    a.id,
+    a.car_no as carNo,
+    a.member_id as memberId,
+    a.autowork_category_id as autoworkCategoryId,
+    a.description,
+    a.staff_id as staffId,
+    a.create_time as createTime,
+    a.store_id as storeId,
+    a.car_key_no as carKeyNo,
+    a.STATUS,
+    a.assign_order_staff_id as assignOrderStaffId,
+    a.assign_order_time as assignOrderTime,
+    a.book_tag_name as bookTagName,
+    a.book_info_id as bookInfoId,
+    a.car_check_id as carCheckId,
+    a.assign_check_staff_id as assignCheckStaffId,
+    a.assign_check_time as assignCheckTime,
+    c.name as brandName,
+    d.name as seriesName ,
+    f.name as modelName,
+    c.logo as carLogo
+    from app_reception_list a
+    left join erp_store_car_log b on b.id = a.car_id
+    left join erp_car_brand c on c.id = b.erp_car_brand_id
+    left join erp_car_series d on d.id = b.erp_car_series_id
+    left join erp_car_model f on f.id = b.erp_car_model_id
+    <where>
+      a.store_id = #{storeId}
+      <if test="carNo!=null and carNo!=''">
+        and a.car_no = #{carNo}
+      </if>
+      <if test="memberId!=null">
+        and a.member_id = #{memberId}
+      </if>
+      <if test='today!=null and today!="0"'>
+        and to_days(a.create_time) = to_days(now())
+      </if>
+      <if test="status!=null">
+        and a.status=#{status}
+      </if>
+      <if test="receptionId!=null">
+        and a.id=#{receptionId}
+      </if>
+      <if test="staffId!=null">
+        and a.staff_id=#{staffId}
+      </if>
+    </where>
+    <if test="pageNum != null and pageSize != null">
+      limit  #{pageNum},#{pageSize}
+    </if>
+  </select>
+
+  <select id="queryListByPage" parameterType="map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from app_reception_list
+    <where>
+      to_days(create_time) = to_days(now())
+      <if test="storeId != null and storeId != ''">
+        and store_id = #{storeId}
+      </if>
+      <if test="status != null">
+        and status = #{status}
+      </if>
+    </where>
+    <if test="pageNum != null and pageSize != null">
+      limit  #{pageNum},#{pageSize}
+    </if>
+  </select>
+
+  <select id="queryNumByPage" parameterType="map">
+    select count(*)
+    from app_reception_list
+    <where>
+      to_days(create_time) = to_days(now())
+      <if test="storeId != null and storeId != ''">
+        and store_id = #{storeId}
+      </if>
+      <if test="status != null">
+        and status = #{status}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectNoOrderReception" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from app_reception_list
+    WHERE
+            member_id = #{memberId}
+        AND status = 0
+    ORDER BY id desc LIMIT 1
+  </select>
+
+  <update id="updateReceptionCheckId" parameterType="java.lang.Long">
+    update app_reception_list set car_check_id=#{checkId} where id=#{receptionId}
+  </update>
+
+</mapper>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.carcheck.dao.EPCarCheckMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.carcheck.entity.EPCarCheck">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="erp_store_id" jdbcType="INTEGER" property="storeId" />
+    <result column="parent_store_id" jdbcType="INTEGER" property="parentStoreId" />
+    <result column="checker_staff_id" jdbcType="INTEGER" property="checkerStaffId" />
+    <result column="erp_member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="car_no" jdbcType="VARCHAR" property="carNo" />
+    <result column="car_id" jdbcType="INTEGER" property="carId" />
+    <result column="vin" jdbcType="VARCHAR" property="vin" />
+    <result column="oil_meter" jdbcType="DOUBLE" property="oilMeter" />
+    <result column="trip_distance" jdbcType="INTEGER" property="tripDistance" />
+    <result column="check_sumary" jdbcType="VARCHAR" property="checkSumary" />
+    <result column="check_status" jdbcType="INTEGER" property="checkStatus" />
+    <result column="confirm_status" jdbcType="INTEGER" property="confirmStatus" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="is_send_sms" jdbcType="INTEGER" property="isSendSms" />
+    <result column="checker_staff_group_id" jdbcType="INTEGER" property="checkerStaffGroupId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="assign_order_staff_id" jdbcType="BIGINT" property="assignOrderStaffId" />
+    <result column="assign_order_time" jdbcType="TIMESTAMP" property="assignOrderTime" />
+
+    <result column="reception_id" jdbcType="BIGINT" property="receptionId" />
+    <result column="book_info_id" jdbcType="BIGINT" property="bookInfoId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, erp_store_id, parent_store_id, checker_staff_id, erp_member_id, car_no, car_id, 
+    vin, oil_meter, trip_distance, check_sumary, check_status, confirm_status, creator, 
+    create_time, update_time, mobile, is_send_sms, checker_staff_group_id, remark, assign_order_staff_id, 
+    assign_order_time, reception_id, book_info_id
+  </sql>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_car_check
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+    delete from erp_car_check
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.carcheck.entity.EPCarCheck" useGeneratedKeys="true">
+    insert into erp_car_check
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="parentStoreId != null">
+        parent_store_id,
+      </if>
+      <if test="checkerStaffId != null">
+        checker_staff_id,
+      </if>
+      <if test="memberId != null">
+        erp_member_id,
+      </if>
+      <if test="carNo != null">
+        car_no,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="vin != null">
+        vin,
+      </if>
+      <if test="oilMeter != null">
+        oil_meter,
+      </if>
+      <if test="tripDistance != null">
+        trip_distance,
+      </if>
+      <if test="checkSumary != null">
+        check_sumary,
+      </if>
+      <if test="checkStatus != null">
+        check_status,
+      </if>
+      <if test="confirmStatus != null">
+        confirm_status,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="isSendSms != null">
+        is_send_sms,
+      </if>
+      <if test="checkerStaffGroupId != null">
+        checker_staff_group_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="assignOrderStaffId != null">
+        assign_order_staff_id,
+      </if>
+      <if test="assignOrderTime != null">
+        assign_order_time,
+      </if>
+      <if test="receptionId != null">
+          reception_id,
+      </if>
+      <if test="bookInfoId != null">
+        book_info_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="parentStoreId != null">
+        #{parentStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="checkerStaffId != null">
+        #{checkerStaffId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="carNo != null">
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="vin != null">
+        #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="oilMeter != null">
+        #{oilMeter,jdbcType=DOUBLE},
+      </if>
+      <if test="tripDistance != null">
+        #{tripDistance,jdbcType=INTEGER},
+      </if>
+      <if test="checkSumary != null">
+        #{checkSumary,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null">
+        #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="confirmStatus != null">
+        #{confirmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="isSendSms != null">
+        #{isSendSms,jdbcType=INTEGER},
+      </if>
+      <if test="checkerStaffGroupId != null">
+        #{checkerStaffGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="assignOrderStaffId != null">
+        #{assignOrderStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="assignOrderTime != null">
+        #{assignOrderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receptionId != null">
+          #{receptionId,jdbcType=BIGINT},
+      </if>
+      <if test="bookInfoId != null">
+          #{bookInfoId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.carcheck.entity.EPCarCheck">
+    update erp_car_check
+    <set>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=INTEGER},
+      </if>
+      <if test="parentStoreId != null">
+        parent_store_id = #{parentStoreId,jdbcType=INTEGER},
+      </if>
+      <if test="checkerStaffId != null">
+        checker_staff_id = #{checkerStaffId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        erp_member_id = #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="carNo != null">
+        car_no = #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="carId != null">
+        car_id = #{carId,jdbcType=INTEGER},
+      </if>
+      <if test="vin != null">
+        vin = #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="oilMeter != null">
+        oil_meter = #{oilMeter,jdbcType=DOUBLE},
+      </if>
+      <if test="tripDistance != null">
+        trip_distance = #{tripDistance,jdbcType=INTEGER},
+      </if>
+      <if test="checkSumary != null">
+        check_sumary = #{checkSumary,jdbcType=VARCHAR},
+      </if>
+      <if test="checkStatus != null">
+        check_status = #{checkStatus,jdbcType=INTEGER},
+      </if>
+      <if test="confirmStatus != null">
+        confirm_status = #{confirmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="isSendSms != null">
+        is_send_sms = #{isSendSms,jdbcType=INTEGER},
+      </if>
+      <if test="checkerStaffGroupId != null">
+        checker_staff_group_id = #{checkerStaffGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="assignOrderStaffId != null">
+        assign_order_staff_id = #{assignOrderStaffId,jdbcType=BIGINT},
+      </if>
+      <if test="assignOrderTime != null">
+        assign_order_time = #{assignOrderTime,jdbcType=TIMESTAMP},
+      </if>
+
+        <if test="receptionId != null">
+            reception_id = #{receptionId,jdbcType=BIGINT},
+        </if>
+        <if test="bookInfoId != null">
+            book_info_id = #{bookInfoId,jdbcType=BIGINT},
+        </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectNoOrderCarCheck"  resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM erp_car_check
+    WHERE
+            erp_member_id = #{memberId}
+    AND id NOT IN (SELECT car_check_id FROM erp_work_order WHERE erp_member_id = #{memberId} AND car_check_id IS NOT NULL)
+    ORDER BY id DESC
+    LIMIT 1
+  </select>
+</mapper>

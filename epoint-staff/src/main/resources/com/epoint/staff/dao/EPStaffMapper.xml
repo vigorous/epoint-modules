@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.staff.dao.EPStaffMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.staff.entity.Staff">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="name_short" jdbcType="VARCHAR" property="nameShort" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="addr" jdbcType="VARCHAR" property="addr" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="erp_staff_store_id" jdbcType="BIGINT" property="erpStaffStoreId" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="im_label" jdbcType="VARCHAR" property="imLabel" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="os_type" jdbcType="VARCHAR" property="osType" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="header" jdbcType="VARCHAR" property="header" />
+    <result column="birth" jdbcType="DATE" property="birth" />
+    <result column="store_name" jdbcType="VARCHAR" property="storeName" />
+    <result column="pno" jdbcType="VARCHAR" property="pno" />
+    <result column="cno" jdbcType="VARCHAR" property="cno" />
+    <result column="dno" jdbcType="VARCHAR" property="dno" />
+    <result column="closing_date" jdbcType="TIMESTAMP" property="closingDate" />
+    <result column="isprobation" jdbcType="CHAR" property="isprobation" />
+    <result column="pname" jdbcType="VARCHAR" property="pname" />
+    <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <result column="dname" jdbcType="VARCHAR" property="dname" />
+    <result column="register_from" jdbcType="INTEGER" property="registerFrom" />
+    <result column="client_access" jdbcType="VARCHAR" property="clientAccess" />
+    <result column="erp_station_id" jdbcType="BIGINT" property="erpStationId" />
+    <result column="allow_store_id" jdbcType="VARCHAR" property="allowStoreId" />
+    <result column="erp_staff_store_ids" jdbcType="VARCHAR" property="erpStaffStoreIds" />
+    <result column="parent_staff_store_id" jdbcType="BIGINT" property="parentStaffStoreId" />
+    <result column="read_version_id" jdbcType="SMALLINT" property="readVersionId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uuid, token, user_name, mobile, password, name, name_short, id_card, addr, create_time, 
+    erp_staff_store_id, type, email, im_label, device_id, os_type, sex, header, birth, 
+    store_name, pno, cno, dno, closing_date, isprobation, pname, cname, dname, register_from, 
+    client_access, erp_station_id, allow_store_id, erp_staff_store_ids, parent_staff_store_id, 
+    read_version_id
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_staff
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_staff
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.staff.entity.Staff" useGeneratedKeys="true">
+    insert into erp_staff
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="nameShort != null">
+        name_short,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="addr != null">
+        addr,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="erpStaffStoreId != null">
+        erp_staff_store_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="imLabel != null">
+        im_label,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="osType != null">
+        os_type,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="header != null">
+        header,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+      <if test="storeName != null">
+        store_name,
+      </if>
+      <if test="pno != null">
+        pno,
+      </if>
+      <if test="cno != null">
+        cno,
+      </if>
+      <if test="dno != null">
+        dno,
+      </if>
+      <if test="closingDate != null">
+        closing_date,
+      </if>
+      <if test="isprobation != null">
+        isprobation,
+      </if>
+      <if test="pname != null">
+        pname,
+      </if>
+      <if test="cname != null">
+        cname,
+      </if>
+      <if test="dname != null">
+        dname,
+      </if>
+      <if test="registerFrom != null">
+        register_from,
+      </if>
+      <if test="clientAccess != null">
+        client_access,
+      </if>
+      <if test="erpStationId != null">
+        erp_station_id,
+      </if>
+      <if test="allowStoreId != null">
+        allow_store_id,
+      </if>
+      <if test="erpStaffStoreIds != null">
+        erp_staff_store_ids,
+      </if>
+      <if test="parentStaffStoreId != null">
+        parent_staff_store_id,
+      </if>
+      <if test="readVersionId != null">
+        read_version_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameShort != null">
+        #{nameShort,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="erpStaffStoreId != null">
+        #{erpStaffStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="imLabel != null">
+        #{imLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="osType != null">
+        #{osType,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="header != null">
+        #{header,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=DATE},
+      </if>
+      <if test="storeName != null">
+        #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="pno != null">
+        #{pno,jdbcType=VARCHAR},
+      </if>
+      <if test="cno != null">
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="dno != null">
+        #{dno,jdbcType=VARCHAR},
+      </if>
+      <if test="closingDate != null">
+        #{closingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isprobation != null">
+        #{isprobation,jdbcType=CHAR},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="dname != null">
+        #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="registerFrom != null">
+        #{registerFrom,jdbcType=INTEGER},
+      </if>
+      <if test="clientAccess != null">
+        #{clientAccess,jdbcType=VARCHAR},
+      </if>
+      <if test="erpStationId != null">
+        #{erpStationId,jdbcType=BIGINT},
+      </if>
+      <if test="allowStoreId != null">
+        #{allowStoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="erpStaffStoreIds != null">
+        #{erpStaffStoreIds,jdbcType=VARCHAR},
+      </if>
+      <if test="parentStaffStoreId != null">
+        #{parentStaffStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="readVersionId != null">
+        #{readVersionId,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.staff.entity.Staff">
+    update erp_staff
+    <set>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameShort != null">
+        name_short = #{nameShort,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="addr != null">
+        addr = #{addr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="erpStaffStoreId != null">
+        erp_staff_store_id = #{erpStaffStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="imLabel != null">
+        im_label = #{imLabel,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="osType != null">
+        os_type = #{osType,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="header != null">
+        header = #{header,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        birth = #{birth,jdbcType=DATE},
+      </if>
+      <if test="storeName != null">
+        store_name = #{storeName,jdbcType=VARCHAR},
+      </if>
+      <if test="pno != null">
+        pno = #{pno,jdbcType=VARCHAR},
+      </if>
+      <if test="cno != null">
+        cno = #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="dno != null">
+        dno = #{dno,jdbcType=VARCHAR},
+      </if>
+      <if test="closingDate != null">
+        closing_date = #{closingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isprobation != null">
+        isprobation = #{isprobation,jdbcType=CHAR},
+      </if>
+      <if test="pname != null">
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="cname != null">
+        cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="dname != null">
+        dname = #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="registerFrom != null">
+        register_from = #{registerFrom,jdbcType=INTEGER},
+      </if>
+      <if test="clientAccess != null">
+        client_access = #{clientAccess,jdbcType=VARCHAR},
+      </if>
+      <if test="erpStationId != null">
+        erp_station_id = #{erpStationId,jdbcType=BIGINT},
+      </if>
+      <if test="allowStoreId != null">
+        allow_store_id = #{allowStoreId,jdbcType=VARCHAR},
+      </if>
+      <if test="erpStaffStoreIds != null">
+        erp_staff_store_ids = #{erpStaffStoreIds,jdbcType=VARCHAR},
+      </if>
+      <if test="parentStaffStoreId != null">
+        parent_staff_store_id = #{parentStaffStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="readVersionId != null">
+        read_version_id = #{readVersionId,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="querySuperAdminStaff" resultType="com.epoint.staff.dto.StaffDTO">
+      select
+        b.id,
+        b.mobile,
+        b.name,
+        a.erp_store_id storeId,
+        a.role_id roleId
+      from erp_staff_store a
+      left join erp_staff b on a.erp_staff_id = b.id
+      where a.erp_store_id = #{storeId}
+        and a.role_id = 0
+  </select>
+
+  <select id="queryRoleTypeOfStoreStaff" resultType="com.epoint.staff.dto.StaffDTO">
+      select
+        b.id,
+        b.mobile,
+        b.name,
+        a.erp_store_id storeId,
+        a.role_id roleId
+      from erp_staff_store a
+      left join erp_staff b on a.erp_staff_id = b.id
+      inner join erp_role c on a.role_id = c.id and c.role_type like '%${roleType}%'
+      where a.erp_store_id = #{storeId} and a.status='0'
+  </select>
+
+  <select id="queryCanOrderStoreStaff" resultType="com.epoint.staff.dto.StaffDTO">
+      select
+        b.id,
+        b.mobile,
+        b.name,
+        a.erp_store_id storeId,
+        a.role_id roleId
+      from erp_staff_store a
+      left join erp_staff b on a.erp_staff_id = b.id
+      inner join erp_role c on a.role_id = c.id
+      where a.erp_store_id = #{storeId}
+        and a.status = 0
+        and c.id in (select distinct role_id from erp_role_menu where menu_id in (19,20045))
+  </select>
+
+  <select id="queryCanQuickOrderStoreStaff" resultType="com.epoint.staff.dto.StaffDTO">
+    select
+    b.id,
+    b.mobile,
+    b.name,
+    a.erp_store_id storeId,
+    a.role_id roleId
+    from erp_staff_store a
+    left join erp_staff b on a.erp_staff_id = b.id
+    inner join erp_role c on a.role_id = c.id
+    where a.erp_store_id = #{storeId}
+      and a.status = 0
+      and c.id in (select distinct role_id from erp_role_menu where menu_id in (19))
+  </select>
+
+  <select id="queryCanRepairOrderStoreStaff" resultType="com.epoint.staff.dto.StaffDTO">
+    select
+      b.id,
+      b.mobile,
+      b.name,
+      a.erp_store_id storeId,
+      a.role_id roleId
+    from erp_staff_store a
+    left join erp_staff b on a.erp_staff_id = b.id
+    inner join erp_role c on a.role_id = c.id
+    where a.erp_store_id = #{storeId}
+      and a.status = 0
+      and c.id in (select distinct role_id from erp_role_menu where menu_id in (20045))
+  </select>
+
+  <select id="queryCanCashStoreStaff" resultType="com.epoint.staff.dto.StaffDTO">
+      select
+        b.id,
+        b.mobile,
+        b.name,
+        a.erp_store_id storeId,
+        a.role_id roleId
+      from erp_staff_store a
+      left join erp_staff b on a.erp_staff_id = b.id
+      inner join erp_role c on a.role_id = c.id
+      where a.erp_store_id = #{storeId}
+        and c.id in (select distinct role_id from erp_role_menu where menu_id in (133,1003))
+  </select>
+
+  <select id="queryStaffByCondition" resultType="com.epoint.staff.dto.StaffDTO">
+    select
+      a.id,
+      b.role_id roleId
+    from erp_staff a
+    left join erp_staff_store b on a.id = b.erp_staff_id
+    where a.id = #{staffId}
+      and b.erp_store_id = #{storeId}
+  </select>
+</mapper>

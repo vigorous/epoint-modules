@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <classPathEntry
+            location="D:/repo/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar"/>
+
+    <context id="template-msg" targetRuntime="MyBatis3">
+
+        <plugin type="com.epoint.plugins.CommentPlugin"></plugin>
+        <plugin type="com.epoint.plugins.IgnoreColumnPlugin"></plugin>
+        <plugin type="com.epoint.plugins.BaseMapperPlugin">
+            <property name="baseMapper" value="com.epoint.dao.BaseMapper"/>
+        </plugin>
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <!-- 在model注释中,显示字段备注 -->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://112.16.81.130:3306/erp_0503"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator
+                targetPackage="com.epoint.tmsg.entity" targetProject="src/main/java">
+            <property name="rootClass" value="com.epoint.entity.BaseEntity"/>
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="false"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator  targetPackage="com.epoint.tmsg.dao" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.epoint.tmsg.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--
+
+               <table tableName="wtp_msg_template" domainObjectName="MsgTemplate"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^wtp_" replaceString=""/>
+        </table>
+
+        <table tableName="wtp_store_msg_template" domainObjectName="StoreMsgTemplate"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^wtp_" replaceString=""/>
+        </table>
+
+        <table tableName="wtp_store_template_msg_log" domainObjectName="StoreTemplateMsgLog"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^wtp_" replaceString=""/>
+        </table>
+
+        <table tableName="wtp_industry" domainObjectName="Industry"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^wtp_" replaceString=""/>
+        </table>
+        <table tableName="wtp_store_industry" domainObjectName="StoreIndustry"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^wtp_" replaceString=""/>
+        </table>
+
+        -->
+
+        <table tableName="wtp_store_msg_template" domainObjectName="StoreMsgTemplate"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^wtp_" replaceString=""/>
+        </table>
+
+    </context>
+</generatorConfiguration>

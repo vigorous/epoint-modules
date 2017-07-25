@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.car.dao.EPCarBrandMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.car.entity.CarBrand">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="word" jdbcType="VARCHAR" property="word" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="is_hot" jdbcType="CHAR" property="isHot" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, word, name, logo, remark, status, is_hot
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_car_brand
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_car_brand
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.car.entity.CarBrand" useGeneratedKeys="true">
+    insert into erp_car_brand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="word != null">
+        word,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isHot != null">
+        is_hot,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="word != null">
+        #{word,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="isHot != null">
+        #{isHot,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.car.entity.CarBrand">
+    update erp_car_brand
+    <set>
+      <if test="word != null">
+        word = #{word,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="isHot != null">
+        is_hot = #{isHot,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

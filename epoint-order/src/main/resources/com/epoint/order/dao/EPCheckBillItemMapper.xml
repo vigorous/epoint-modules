@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPCheckBillItemMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.CheckBillItem">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="alipay_money" jdbcType="DOUBLE" property="alipayMoney" />
+    <result column="alipay_rate" jdbcType="DOUBLE" property="alipayRate" />
+    <result column="wx_money" jdbcType="DOUBLE" property="wxMoney" />
+    <result column="wx_rate" jdbcType="DOUBLE" property="wxRate" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_id, order_no, alipay_money, alipay_rate, wx_money, wx_rate, status, erp_store_id, 
+    order_time, create_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_check_bill_item
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_check_bill_item
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.CheckBillItem" useGeneratedKeys="true">
+    insert into erp_check_bill_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="alipayMoney != null">
+        alipay_money,
+      </if>
+      <if test="alipayRate != null">
+        alipay_rate,
+      </if>
+      <if test="wxMoney != null">
+        wx_money,
+      </if>
+      <if test="wxRate != null">
+        wx_rate,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="orderTime != null">
+        order_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayMoney != null">
+        #{alipayMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="alipayRate != null">
+        #{alipayRate,jdbcType=DOUBLE},
+      </if>
+      <if test="wxMoney != null">
+        #{wxMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="wxRate != null">
+        #{wxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.CheckBillItem">
+    update erp_check_bill_item
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayMoney != null">
+        alipay_money = #{alipayMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="alipayRate != null">
+        alipay_rate = #{alipayRate,jdbcType=DOUBLE},
+      </if>
+      <if test="wxMoney != null">
+        wx_money = #{wxMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="wxRate != null">
+        wx_rate = #{wxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

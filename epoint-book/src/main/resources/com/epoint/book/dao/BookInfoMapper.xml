@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.book.dao.BookInfoMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.book.entity.BookInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="book_date" jdbcType="VARCHAR" property="bookDate" />
+    <result column="book_hour" jdbcType="VARCHAR" property="bookHour" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="member_name" jdbcType="VARCHAR" property="memberName" />
+    <result column="is_member" jdbcType="VARCHAR" property="isMember" />
+    <result column="customer_manager" jdbcType="VARCHAR" property="customerManager" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="car_no" jdbcType="VARCHAR" property="carNo" />
+    <result column="tags" jdbcType="VARCHAR" property="tags" />
+    <result column="service_item_list" jdbcType="VARCHAR" property="serviceItemList" />
+    <result column="member_remark" jdbcType="VARCHAR" property="memberRemark" />
+    <result column="store_remark" jdbcType="VARCHAR" property="storeRemark" />
+    <result column="book_type" jdbcType="INTEGER" property="bookType" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="send_sms" jdbcType="INTEGER" property="sendSms" />
+    <result column="read_status" jdbcType="INTEGER" property="readStatus" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="reception_id" jdbcType="BIGINT" property="receptionId" />
+    <result column="car_check_id" jdbcType="BIGINT" property="carCheckId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, store_id, book_date, book_hour, member_id, member_name, is_member, customer_manager, 
+    mobile, car_no, tags, service_item_list, member_remark, store_remark, book_type, 
+    status,send_sms,read_status, update_time, create_time, reception_id, car_check_id
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wx_book_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from wx_book_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.book.entity.BookInfo" useGeneratedKeys="true">
+    insert into wx_book_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="bookDate != null">
+        book_date,
+      </if>
+      <if test="bookHour != null">
+        book_hour,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="memberName != null">
+        member_name,
+      </if>
+      <if test="isMember != null">
+        is_member,
+      </if>
+      <if test="customerManager != null">
+        customer_manager,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="carNo != null">
+        car_no,
+      </if>
+      <if test="tags != null">
+        tags,
+      </if>
+      <if test="serviceItemList != null">
+        service_item_list,
+      </if>
+      <if test="memberRemark != null">
+        member_remark,
+      </if>
+      <if test="storeRemark != null">
+        store_remark,
+      </if>
+      <if test="bookType != null">
+        book_type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="sendSms != null">
+        send_sms,
+      </if>
+      <if test="readStatus != null">
+        read_status,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="receptionId != null">
+        reception_id,
+      </if>
+      <if test="carCheckId != null">
+        car_check_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="bookDate != null">
+        #{bookDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bookHour != null">
+        #{bookHour,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="memberName != null">
+        #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="isMember != null">
+        #{isMember,jdbcType=VARCHAR},
+      </if>
+      <if test="customerManager != null">
+        #{customerManager,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="carNo != null">
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null">
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItemList != null">
+        #{serviceItemList,jdbcType=VARCHAR},
+      </if>
+      <if test="memberRemark != null">
+        #{memberRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="storeRemark != null">
+        #{storeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bookType != null">
+        #{bookType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sendSms != null">
+        #{sendSms,jdbcType=INTEGER},
+      </if>
+      <if test="readStatus != null">
+        #{readStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receptionId != null">
+        #{receptionId,jdbcType=BIGINT},
+      </if>
+      <if test="carCheckId != null">
+        #{carCheckId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.book.entity.BookInfo">
+    update wx_book_info
+    <set>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="bookDate != null">
+        book_date = #{bookDate,jdbcType=VARCHAR},
+      </if>
+      <if test="bookHour != null">
+        book_hour = #{bookHour,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="memberName != null">
+        member_name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="isMember != null">
+        is_member = #{isMember,jdbcType=VARCHAR},
+      </if>
+      <if test="customerManager != null">
+        customer_manager = #{customerManager,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="carNo != null">
+        car_no = #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null">
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceItemList != null">
+        service_item_list = #{serviceItemList,jdbcType=VARCHAR},
+      </if>
+      <if test="memberRemark != null">
+        member_remark = #{memberRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="storeRemark != null">
+        store_remark = #{storeRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="bookType != null">
+        book_type = #{bookType,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sendSms != null">
+        send_sms = #{sendSms,jdbcType=INTEGER},
+      </if>
+      <if test="readStatus != null">
+        read_status = #{readStatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="receptionId != null">
+        reception_id = #{receptionId,jdbcType=BIGINT},
+      </if>
+      <if test="carCheckId != null">
+        car_check_id = #{carCheckId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+  <select id="selectByBookDate"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wx_book_info
+    where store_id = #{storeId,jdbcType=BIGINT} AND book_date = #{bookDate,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByMemberId"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wx_book_info
+    where member_id = #{memberId,jdbcType=BIGINT}
+    ORDER BY id DESC
+  </select>
+
+    <!-- 1:车牌;2:手机;3:客户姓名 -->
+    <select id="selectByPage" parameterType="com.epoint.book.dto.BookInfoPageQueryBean"  resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from wx_book_info
+        where
+              store_id = #{storeId,jdbcType=BIGINT}
+      <if test="condition != null">
+        AND (car_no LIKE CONCAT('%',#{condition,jdbcType=VARCHAR},'%')
+        OR mobile LIKE CONCAT('%',#{condition,jdbcType=VARCHAR},'%')
+        OR member_name LIKE CONCAT('%',#{condition,jdbcType=VARCHAR},'%'))
+      </if>
+               <if test="bookDateStart != null">
+                    AND  book_date <![CDATA[ >= ]]> #{bookDateStart}
+               </if>
+               <if test="bookDateEnd != null">
+                    AND book_date <![CDATA[ <=  ]]> #{bookDateEnd}
+                </if>
+        ORDER BY read_status ASC,id DESC
+        LIMIT #{startRowNo},#{rows}
+    </select>
+
+    <!-- 1:车牌;2:手机;3:客户姓名
+    <if test="condition != null and conditionType == 1">
+            AND car_no LIKE CONCAT('%',#{condition,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="condition != null and conditionType == 2">
+            AND mobile LIKE CONCAT('%',#{condition,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="condition != null and conditionType == 3">
+            AND member_name LIKE CONCAT('%',#{condition,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="bookDateStart != null">
+            AND  book_date <![CDATA[ >= ]]> #{bookDateStart}
+        </if>
+        <if test="bookDateEnd != null">
+            AND book_date <![CDATA[ <=  ]]> #{bookDateEnd}
+        </if>
+
+    -->
+    <select id="selectCount" parameterType="com.epoint.book.dto.BookInfoQueryBean"  resultType="java.lang.Integer">
+        select
+           count(*)
+        from wx_book_info
+        where
+        store_id = #{storeId,jdbcType=BIGINT}
+      <if test="condition != null">
+        AND (car_no LIKE CONCAT('%',#{condition,jdbcType=VARCHAR},'%')
+         OR mobile LIKE CONCAT('%',#{condition,jdbcType=VARCHAR},'%')
+         OR member_name LIKE CONCAT('%',#{condition,jdbcType=VARCHAR},'%'))
+      </if>
+
+      <if test="bookDateStart != null">
+        AND  book_date <![CDATA[ >= ]]> #{bookDateStart}
+      </if>
+      <if test="bookDateEnd != null">
+        AND book_date <![CDATA[ <=  ]]> #{bookDateEnd}
+      </if>
+
+    </select>
+
+  <select id="selectCountByCarNo" parameterType="com.epoint.book.entity.BookInfo"  resultType="java.lang.Integer">
+    select
+          count(*)
+    from wx_book_info
+    where
+           store_id = #{storeId,jdbcType=BIGINT}
+      AND  car_no = #{carNo}
+      AND  book_date = #{bookDate}
+  </select>
+</mapper>

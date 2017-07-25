@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.book.dao.BookWeekSettingMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.book.entity.BookWeekSetting">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="day_1" jdbcType="INTEGER" property="day1" />
+    <result column="day_2" jdbcType="INTEGER" property="day2" />
+    <result column="day_3" jdbcType="INTEGER" property="day3" />
+    <result column="day_4" jdbcType="INTEGER" property="day4" />
+    <result column="day_5" jdbcType="INTEGER" property="day5" />
+    <result column="day_6" jdbcType="INTEGER" property="day6" />
+    <result column="day_7" jdbcType="INTEGER" property="day7" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, store_id, day_1, day_2, day_3, day_4, day_5, day_6, day_7, update_time, create_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wx_book_week_setting
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from wx_book_week_setting
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.book.entity.BookWeekSetting" useGeneratedKeys="true">
+    insert into wx_book_week_setting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="day1 != null">
+        day_1,
+      </if>
+      <if test="day2 != null">
+        day_2,
+      </if>
+      <if test="day3 != null">
+        day_3,
+      </if>
+      <if test="day4 != null">
+        day_4,
+      </if>
+      <if test="day5 != null">
+        day_5,
+      </if>
+      <if test="day6 != null">
+        day_6,
+      </if>
+      <if test="day7 != null">
+        day_7,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="day1 != null">
+        #{day1,jdbcType=INTEGER},
+      </if>
+      <if test="day2 != null">
+        #{day2,jdbcType=INTEGER},
+      </if>
+      <if test="day3 != null">
+        #{day3,jdbcType=INTEGER},
+      </if>
+      <if test="day4 != null">
+        #{day4,jdbcType=INTEGER},
+      </if>
+      <if test="day5 != null">
+        #{day5,jdbcType=INTEGER},
+      </if>
+      <if test="day6 != null">
+        #{day6,jdbcType=INTEGER},
+      </if>
+      <if test="day7 != null">
+        #{day7,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.book.entity.BookWeekSetting">
+    update wx_book_week_setting
+    <set>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="day1 != null">
+        day_1 = #{day1,jdbcType=INTEGER},
+      </if>
+      <if test="day2 != null">
+        day_2 = #{day2,jdbcType=INTEGER},
+      </if>
+      <if test="day3 != null">
+        day_3 = #{day3,jdbcType=INTEGER},
+      </if>
+      <if test="day4 != null">
+        day_4 = #{day4,jdbcType=INTEGER},
+      </if>
+      <if test="day5 != null">
+        day_5 = #{day5,jdbcType=INTEGER},
+      </if>
+      <if test="day6 != null">
+        day_6 = #{day6,jdbcType=INTEGER},
+      </if>
+      <if test="day7 != null">
+        day_7 = #{day7,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByStoreId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from wx_book_week_setting
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </select>
+
+
+  <update id="updateByStoreId" parameterType="com.epoint.book.entity.BookWeekSetting">
+    update wx_book_week_setting
+      SET
+      <if test="day1 != null">
+        day_1 = #{day1,jdbcType=INTEGER},
+      </if>
+      <if test="day2 != null">
+        day_2 = #{day2,jdbcType=INTEGER},
+      </if>
+      <if test="day3 != null">
+        day_3 = #{day3,jdbcType=INTEGER},
+      </if>
+      <if test="day4 != null">
+        day_4 = #{day4,jdbcType=INTEGER},
+      </if>
+      <if test="day5 != null">
+        day_5 = #{day5,jdbcType=INTEGER},
+      </if>
+      <if test="day6 != null">
+        day_6 = #{day6,jdbcType=INTEGER},
+      </if>
+      <if test="day7 != null">
+        day_7 = #{day7,jdbcType=INTEGER},
+      </if>
+       update_time = #{updateTime,jdbcType=TIMESTAMP}
+
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </update>
+</mapper>

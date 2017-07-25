@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.coupon.dao.StoreCouponMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.coupon.entity.StoreCoupon">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="coupon_id" jdbcType="BIGINT" property="couponId" />
+    <result column="receive_num" jdbcType="INTEGER" property="receiveNum" />
+    <result column="use_num" jdbcType="INTEGER" property="useNum" />
+    <result column="order_money" jdbcType="DOUBLE" property="orderMoney" />
+    <result column="apply_store_id" jdbcType="BIGINT" property="applyStoreId" />
+    <result column="coupon_status" jdbcType="SMALLINT" property="couponStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, coupon_id,receive_num,use_num,order_money,apply_store_id,coupon_status, create_time, update_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_coupon_store
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_coupon_store
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.epoint.coupon.entity.StoreCoupon" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+    insert into erp_coupon_store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="couponId != null">
+        coupon_id,
+      </if>
+      <if test="receiveNum != null">
+        receive_num,
+      </if>
+      <if test="useNum != null">
+        use_num,
+      </if>
+      <if test="orderMoney != null">
+        order_money,
+      </if>
+      <if test="applyStoreId != null">
+        apply_store_id,
+      </if>
+      <if test="couponStatus != null">
+        coupon_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="couponId != null">
+        #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveNum != null">
+        #{receiveNum,jdbcType=INTEGER},
+      </if>
+      <if test="useNum != null">
+        #{useNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderMoney != null">
+        #{orderMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applyStoreId != null">
+        #{applyStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="couponStatus != null">
+        #{couponStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.coupon.entity.StoreCoupon">
+    update erp_coupon_store
+    <set>
+      <if test="couponId != null">
+        coupon_id = #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="receiveNum != null">
+        receive_num = #{receiveNum,jdbcType=INTEGER},
+      </if>
+      <if test="useNum != null">
+        use_num = #{useNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderMoney != null">
+        order_money = #{orderMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="applyStoreId != null">
+        apply_store_id = #{applyStoreId,jdbcType=BIGINT},
+      </if>
+      <if test="couponStatus != null">
+        coupon_status = #{couponStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!-- 根据赠券ID查询开启的适用门店 -->
+  <select id="queryApplyStoreByCouponId" resultType="com.epoint.coupon.dto.StoreCouponDTO">
+    select
+      a.id,
+      a.coupon_id couponId,
+      a.apply_store_id applyStoreId,
+      b.name storeName,
+      a.coupon_status AS couponStatus,
+      a.create_time createTime,
+      a.update_time updateTime
+    from erp_coupon_store a
+    left join erp_store b on a.apply_store_id = b.id
+    where a.coupon_id = #{couponId,jdbcType=BIGINT}
+      and a.coupon_status = 0
+  </select>
+
+  <!-- 根据赠券ID查询所有的适用门店 -->
+  <select id="queryAllApplyStoreByCouponId" resultType="com.epoint.coupon.dto.StoreCouponDTO">
+    select
+    a.id,
+    a.coupon_id couponId,
+    a.apply_store_id applyStoreId,
+    b.name storeName,
+    a.coupon_status AS couponStatus,
+    a.create_time createTime,
+    a.update_time updateTime
+    from erp_coupon_store a
+    left join erp_store b on a.apply_store_id = b.id
+    where a.coupon_id = #{couponId,jdbcType=BIGINT}
+    AND a.coupon_status = 0
+  </select>
+
+  <!-- 查询适用门店总数量 -->
+  <select id="selectApplyStoreNumByCouponId" resultType="java.lang.Integer">
+    select count(*)
+    from erp_coupon_store a
+    where a.coupon_id = #{couponId,jdbcType=BIGINT}
+  </select>
+
+  <update id="updateReceiveNum">
+    update erp_coupon_store SET
+    <if test="increment != null">
+      receive_num = receive_num + #{increment,jdbcType=INTEGER},
+    </if>
+    update_time = now()
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+      and apply_store_id = #{storeId,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateUseNumAndOrderAmt" parameterType="com.epoint.coupon.entity.StoreCoupon">
+    update erp_coupon_store SET
+    <if test="useNum != null">
+      use_num =  use_num + #{useNum,jdbcType=INTEGER},
+    </if>
+    <if test="orderMoney != null">
+      order_money = order_money + #{orderMoney,jdbcType=DOUBLE},
+    </if>
+    update_time = now()
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+      and apply_store_id = #{applyStoreId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByStoreIdAndCouponId"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from erp_coupon_store
+    where coupon_id = #{couponId,jdbcType=BIGINT} AND apply_store_id = #{storeId,jdbcType=BIGINT}
+  </select>
+
+  <update id="updateByCouponIdAndStoreId" parameterType="com.epoint.coupon.entity.StoreCoupon">
+    update erp_coupon_store
+    set coupon_status = #{couponStatus,jdbcType=SMALLINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+      and apply_store_id = #{applyStoreId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectExpiredCoupon" parameterType="map" resultType="com.epoint.coupon.entity.StoreCoupon">
+    select
+      a.id,
+      a.coupon_id couponId,
+      a.coupon_status couponStatus,
+      a.apply_store_id applyStoreId,
+      a.create_time createTime,
+      a.update_time updateTime
+    from erp_coupon_store a
+    left join erp_coupon b on a.coupon_id = b.id
+    where a.apply_store_id = #{storeId}
+    <![CDATA[ and b.end_time < #{endTime} ]]>
+  </select>
+</mapper>

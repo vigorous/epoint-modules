@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.flow.dao.FlowNodeLogMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.flow.entity.FlowNodeLog">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="node_id" jdbcType="BIGINT" property="nodeId" />
+    <result column="node_name" jdbcType="VARCHAR" property="nodeName" />
+    <result column="node_code" jdbcType="VARCHAR" property="nodeCode" />
+    <result column="node_seq" jdbcType="INTEGER" property="nodeSeq" />
+    <result column="pre_node" jdbcType="BIGINT" property="preNode" />
+    <result column="next_node" jdbcType="BIGINT" property="nextNode" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="can_closed" jdbcType="INTEGER" property="canClosed" />
+    <result column="fail_return_node" jdbcType="BIGINT" property="failReturnNode" />
+    <result column="flow_id" jdbcType="BIGINT" property="flowId" />
+    <result column="node_create_time" jdbcType="TIMESTAMP" property="nodeCreateTime" />
+    <result column="node_update_time" jdbcType="TIMESTAMP" property="nodeUpdateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, node_id, node_name, node_code, node_seq, pre_node, next_node, status, can_closed, fail_return_node,
+    flow_id, node_create_time, node_update_time, create_time, update_time
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_flow_node_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_flow_node_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.flow.entity.FlowNodeLog" useGeneratedKeys="true">
+    insert into erp_flow_node_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="nodeName != null">
+        node_name,
+      </if>
+      <if test="nodeCode != null">
+        node_code,
+      </if>
+      <if test="nodeSeq != null">
+        node_seq,
+      </if>
+      <if test="preNode != null">
+        pre_node,
+      </if>
+      <if test="nextNode != null">
+        next_node,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="canClosed != null">
+        can_closed,
+      </if>
+      <if test="failReturnNode != null">
+        fail_return_node,
+      </if>
+      <if test="flowId != null">
+        flow_id,
+      </if>
+      <if test="nodeCreateTime != null">
+        node_create_time,
+      </if>
+      <if test="nodeUpdateTime != null">
+        node_update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeName != null">
+        #{nodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeCode != null">
+        #{nodeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeSeq != null">
+        #{nodeSeq,jdbcType=INTEGER},
+      </if>
+      <if test="preNode != null">
+        #{preNode,jdbcType=BIGINT},
+      </if>
+      <if test="nextNode != null">
+        #{nextNode,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="canClosed != null">
+        #{canClosed,jdbcType=INTEGER},
+      </if>
+      <if test="failReturnNode != null">
+        #{failReturnNode,jdbcType=VARCHAR},
+      </if>
+      <if test="flowId != null">
+        #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeCreateTime != null">
+        #{nodeCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nodeUpdateTime != null">
+        #{nodeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.flow.entity.FlowNodeLog">
+    update erp_flow_node_log
+    <set>
+      <if test="nodeId != null">
+        node_id = #{nodeId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeName != null">
+        node_name = #{nodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeCode != null">
+        node_code = #{nodeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeSeq != null">
+        node_seq = #{nodeSeq,jdbcType=INTEGER},
+      </if>
+      <if test="preNode != null">
+        pre_node = #{preNode,jdbcType=BIGINT},
+      </if>
+      <if test="nextNode != null">
+        next_node = #{nextNode,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="canClosed != null">
+        can_closed = #{canClosed,jdbcType=INTEGER},
+      </if>
+      <if test="failReturnNode != null">
+        fail_return_node = #{failReturnNode,jdbcType=BIGINT},
+      </if>
+      <if test="flowId != null">
+        flow_id = #{flowId,jdbcType=BIGINT},
+      </if>
+      <if test="nodeCreateTime != null">
+        node_create_time = #{nodeCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nodeUpdateTime != null">
+        node_update_time = #{nodeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByFlowId" parameterType="com.epoint.flow.entity.FlowNodeLog" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from erp_flow_node_log
+    <where>
+      <if test="flowId != null">
+        and flow_id = #{flowId,jdbcType=BIGINT}
+      </if>
+    </where>
+    order by node_seq
+  </select>
+
+  <select id="selectByFlowIdAndNodeCode" parameterType="com.epoint.flow.entity.FlowNodeLog" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from erp_flow_node_log
+    <where>
+        <if test="flowId != null">
+            and flow_id = #{flowId,jdbcType=BIGINT}
+        </if>
+        <if test="nodeCode != null">
+            and node_code = #{nodeCode,jdbcType=VARCHAR}
+        </if>
+    </where>
+  </select>
+</mapper>

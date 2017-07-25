@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.member.dao.EPMemberStoreInfoMapper">
+    <resultMap id="BaseResultMap" type="com.epoint.member.entity.MemberStoreInfo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="erp_store_id" jdbcType="BIGINT" property="storeId"/>
+        <result column="erp_member_id" jdbcType="BIGINT" property="memberId"/>
+        <result column="point" jdbcType="DOUBLE" property="point"/>
+        <result column="has_card" jdbcType="CHAR" property="hasCard"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="status" jdbcType="CHAR" property="status"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="customer_from" jdbcType="VARCHAR" property="customerFrom"/>
+        <result column="member_manager_id" jdbcType="BIGINT" property="memberManagerId"/>
+        <result column="reg_channel" jdbcType="VARCHAR" property="regChannel"/>
+        <result column="member_level_id" jdbcType="BIGINT" property="memberLevelId"/>
+        <result column="member_type" jdbcType="INTEGER" property="memberType"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="nick" jdbcType="VARCHAR" property="nick"/>
+        <result column="sex" jdbcType="CHAR" property="sex"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="addr" jdbcType="VARCHAR" property="addr"/>
+        <result column="uuid" jdbcType="VARCHAR" property="uuid"/>
+        <result column="birth" jdbcType="DATE" property="birth"/>
+        <result column="drive_type" jdbcType="VARCHAR" property="driveType"/>
+        <result column="reviewdate" jdbcType="DATE" property="reviewdate"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="device_id" jdbcType="VARCHAR" property="deviceId"/>
+        <result column="company" jdbcType="VARCHAR" property="company"/>
+        <result column="id_card" jdbcType="VARCHAR" property="idCard"/>
+        <result column="driving_license_no" jdbcType="VARCHAR" property="drivingLicenseNo"/>
+        <result column="weixin" jdbcType="VARCHAR" property="weixin"/>
+        <result column="pno" jdbcType="INTEGER" property="pno"/>
+        <result column="cno" jdbcType="INTEGER" property="cno"/>
+        <result column="dno" jdbcType="INTEGER" property="dno"/>
+        <result column="landline_phone" jdbcType="VARCHAR" property="landlinePhone"/>
+        <result column="member_no" jdbcType="VARCHAR" property="memberNo"/>
+        <result column="primary_car" jdbcType="BIGINT" property="primaryCar"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="sum_consume" jdbcType="DOUBLE" property="sumConsume"/>
+        <result column="sum_cash" jdbcType="DOUBLE" property="sumCash"/>
+        <result column="buy_card_time" jdbcType="TIMESTAMP" property="buyCardTime"/>
+        <result column="login_time" jdbcType="TIMESTAMP" property="loginTime"/>
+        <result column="car_no" jdbcType="VARCHAR" property="carNo"/>
+        <result column="insurance_date" jdbcType="TIMESTAMP" property="insuranceDate"/>
+        <result column="token" jdbcType="VARCHAR" property="token"/>
+        <result column="header" jdbcType="VARCHAR" property="header"/>
+        <result column="im_label" jdbcType="VARCHAR" property="imLabel"/>
+        <result column="random_code" jdbcType="INTEGER" property="randomCode"/>
+        <result column="oil" jdbcType="DOUBLE" property="oil"/>
+        <result column="qr_code" jdbcType="CHAR" property="qrCode"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="platform_point" jdbcType="DOUBLE" property="platformPoint"/>
+        <result column="self_register" jdbcType="CHAR" property="selfRegister"/>
+        <result column="vehicle_id" jdbcType="VARCHAR" property="vehicleId"/>
+        <result column="kilometers" jdbcType="DOUBLE" property="kilometers"/>
+        <result column="erp_car_model_id" jdbcType="BIGINT" property="carModelId"/>
+        <result column="erp_car_brand_id" jdbcType="BIGINT" property="carBrandId"/>
+        <result column="erp_car_series_id" jdbcType="BIGINT" property="carSeriesId"/>
+        <result column="parent_store_id" jdbcType="BIGINT" property="parentStoreId"/>
+        <result column="wx_app_id" jdbcType="VARCHAR" property="wxAppId"/>
+        <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="union_open_id" jdbcType="VARCHAR" property="unionOpenId"/>
+        <result column="mall_user_id" jdbcType="BIGINT" property="mallUserId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, erp_store_id, erp_member_id, point, has_card, create_time, status, update_time, 
+    customer_from, member_manager_id, reg_channel, member_level_id, member_type, name, 
+    nick, sex, mobile, addr, uuid, birth, drive_type, reviewdate, email, device_id, company, 
+    id_card, driving_license_no, weixin, pno, cno, dno, landline_phone, member_no, primary_car, 
+    remark, sum_consume, sum_cash, buy_card_time, login_time, car_no, insurance_date, 
+    token, header, im_label, random_code, oil, qr_code, password, platform_point, self_register, 
+    vehicle_id, kilometers, erp_car_model_id, erp_car_brand_id, erp_car_series_id, parent_store_id, 
+    wx_app_id, open_id, union_open_id, mall_user_id
+  </sql>
+    <select id="selectById" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from erp_member_store_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteById" parameterType="map">
+    delete from erp_member_store_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.member.entity.MemberStoreInfo"
+            useGeneratedKeys="true">
+        insert into erp_member_store_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="storeId != null">
+                erp_store_id,
+            </if>
+            <if test="memberId != null">
+                erp_member_id,
+            </if>
+            <if test="point != null">
+                point,
+            </if>
+            <if test="hasCard != null">
+                has_card,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="customerFrom != null">
+                customer_from,
+            </if>
+            <if test="memberManagerId != null">
+                member_manager_id,
+            </if>
+            <if test="regChannel != null">
+                reg_channel,
+            </if>
+            <if test="memberLevelId != null">
+                member_level_id,
+            </if>
+            <if test="memberType != null">
+                member_type,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="nick != null">
+                nick,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="addr != null">
+                addr,
+            </if>
+            <if test="uuid != null">
+                uuid,
+            </if>
+            <if test="birth != null">
+                birth,
+            </if>
+            <if test="driveType != null">
+                drive_type,
+            </if>
+            <if test="reviewdate != null">
+                reviewdate,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="deviceId != null">
+                device_id,
+            </if>
+            <if test="company != null">
+                company,
+            </if>
+            <if test="idCard != null">
+                id_card,
+            </if>
+            <if test="drivingLicenseNo != null">
+                driving_license_no,
+            </if>
+            <if test="weixin != null">
+                weixin,
+            </if>
+            <if test="pno != null">
+                pno,
+            </if>
+            <if test="cno != null">
+                cno,
+            </if>
+            <if test="dno != null">
+                dno,
+            </if>
+            <if test="landlinePhone != null">
+                landline_phone,
+            </if>
+            <if test="memberNo != null">
+                member_no,
+            </if>
+            <if test="primaryCar != null">
+                primary_car,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+            <if test="sumConsume != null">
+                sum_consume,
+            </if>
+            <if test="sumCash != null">
+                sum_cash,
+            </if>
+            <if test="buyCardTime != null">
+                buy_card_time,
+            </if>
+            <if test="loginTime != null">
+                login_time,
+            </if>
+            <if test="carNo != null">
+                car_no,
+            </if>
+            <if test="insuranceDate != null">
+                insurance_date,
+            </if>
+            <if test="token != null">
+                token,
+            </if>
+            <if test="header != null">
+                header,
+            </if>
+            <if test="imLabel != null">
+                im_label,
+            </if>
+            <if test="randomCode != null">
+                random_code,
+            </if>
+            <if test="oil != null">
+                oil,
+            </if>
+            <if test="qrCode != null">
+                qr_code,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="platformPoint != null">
+                platform_point,
+            </if>
+            <if test="selfRegister != null">
+                self_register,
+            </if>
+            <if test="vehicleId != null">
+                vehicle_id,
+            </if>
+            <if test="kilometers != null">
+                kilometers,
+            </if>
+            <if test="carModelId != null">
+                erp_car_model_id,
+            </if>
+            <if test="carBrandId != null">
+                erp_car_brand_id,
+            </if>
+            <if test="carSeriesId != null">
+                erp_car_series_id,
+            </if>
+            <if test="parentStoreId != null">
+                parent_store_id,
+            </if>
+            <if test="wxAppId != null">
+                wx_app_id,
+            </if>
+            <if test="openId != null">
+                open_id,
+            </if>
+            <if test="unionOpenId != null">
+                union_open_id,
+            </if>
+            <if test="mallUserId != null">
+                mall_user_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="storeId != null">
+                #{storeId,jdbcType=BIGINT},
+            </if>
+            <if test="memberId != null">
+                #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="point != null">
+                #{point,jdbcType=DOUBLE},
+            </if>
+            <if test="hasCard != null">
+                #{hasCard,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customerFrom != null">
+                #{customerFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="memberManagerId != null">
+                #{memberManagerId,jdbcType=BIGINT},
+            </if>
+            <if test="regChannel != null">
+                #{regChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="memberLevelId != null">
+                #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="memberType != null">
+                #{memberType,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="nick != null">
+                #{nick,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=CHAR},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="addr != null">
+                #{addr,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="birth != null">
+                #{birth,jdbcType=DATE},
+            </if>
+            <if test="driveType != null">
+                #{driveType,jdbcType=VARCHAR},
+            </if>
+            <if test="reviewdate != null">
+                #{reviewdate,jdbcType=DATE},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceId != null">
+                #{deviceId,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="idCard != null">
+                #{idCard,jdbcType=VARCHAR},
+            </if>
+            <if test="drivingLicenseNo != null">
+                #{drivingLicenseNo,jdbcType=VARCHAR},
+            </if>
+            <if test="weixin != null">
+                #{weixin,jdbcType=VARCHAR},
+            </if>
+            <if test="pno != null">
+                #{pno,jdbcType=INTEGER},
+            </if>
+            <if test="cno != null">
+                #{cno,jdbcType=INTEGER},
+            </if>
+            <if test="dno != null">
+                #{dno,jdbcType=INTEGER},
+            </if>
+            <if test="landlinePhone != null">
+                #{landlinePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="memberNo != null">
+                #{memberNo,jdbcType=VARCHAR},
+            </if>
+            <if test="primaryCar != null">
+                #{primaryCar,jdbcType=BIGINT},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="sumConsume != null">
+                #{sumConsume,jdbcType=DOUBLE},
+            </if>
+            <if test="sumCash != null">
+                #{sumCash,jdbcType=DOUBLE},
+            </if>
+            <if test="buyCardTime != null">
+                #{buyCardTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginTime != null">
+                #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="carNo != null">
+                #{carNo,jdbcType=VARCHAR},
+            </if>
+            <if test="insuranceDate != null">
+                #{insuranceDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="token != null">
+                #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="header != null">
+                #{header,jdbcType=VARCHAR},
+            </if>
+            <if test="imLabel != null">
+                #{imLabel,jdbcType=VARCHAR},
+            </if>
+            <if test="randomCode != null">
+                #{randomCode,jdbcType=INTEGER},
+            </if>
+            <if test="oil != null">
+                #{oil,jdbcType=DOUBLE},
+            </if>
+            <if test="qrCode != null">
+                #{qrCode,jdbcType=CHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="platformPoint != null">
+                #{platformPoint,jdbcType=DOUBLE},
+            </if>
+            <if test="selfRegister != null">
+                #{selfRegister,jdbcType=CHAR},
+            </if>
+            <if test="vehicleId != null">
+                #{vehicleId,jdbcType=VARCHAR},
+            </if>
+            <if test="kilometers != null">
+                #{kilometers,jdbcType=DOUBLE},
+            </if>
+            <if test="carModelId != null">
+                #{carModelId,jdbcType=BIGINT},
+            </if>
+            <if test="carBrandId != null">
+                #{carBrandId,jdbcType=BIGINT},
+            </if>
+            <if test="carSeriesId != null">
+                #{carSeriesId,jdbcType=BIGINT},
+            </if>
+            <if test="parentStoreId != null">
+                #{parentStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="wxAppId != null">
+                #{wxAppId,jdbcType=VARCHAR},
+            </if>
+            <if test="openId != null">
+                #{openId,jdbcType=VARCHAR},
+            </if>
+            <if test="unionOpenId != null">
+                #{unionOpenId,jdbcType=VARCHAR},
+            </if>
+            <if test="mallUserId != null">
+                #{mallUserId,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateById" parameterType="com.epoint.member.entity.MemberStoreInfo">
+        update erp_member_store_info
+        <set>
+            <if test="memberId != null">
+                erp_member_id = #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="point != null">
+                point = #{point,jdbcType=DOUBLE},
+            </if>
+            <if test="hasCard != null">
+                has_card = #{hasCard,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=CHAR},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customerFrom != null">
+                customer_from = #{customerFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="memberManagerId != null">
+                member_manager_id = #{memberManagerId,jdbcType=BIGINT},
+            </if>
+            <if test="regChannel != null">
+                reg_channel = #{regChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="memberLevelId != null">
+                member_level_id = #{memberLevelId,jdbcType=BIGINT},
+            </if>
+            <if test="memberType != null">
+                member_type = #{memberType,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="nick != null">
+                nick = #{nick,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=CHAR},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="addr != null">
+                addr = #{addr,jdbcType=VARCHAR},
+            </if>
+            <if test="uuid != null">
+                uuid = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="birth != null">
+                birth = #{birth,jdbcType=DATE},
+            </if>
+            <if test="driveType != null">
+                drive_type = #{driveType,jdbcType=VARCHAR},
+            </if>
+            <if test="reviewdate != null">
+                reviewdate = #{reviewdate,jdbcType=DATE},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceId != null">
+                device_id = #{deviceId,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null">
+                company = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="idCard != null">
+                id_card = #{idCard,jdbcType=VARCHAR},
+            </if>
+            <if test="drivingLicenseNo != null">
+                driving_license_no = #{drivingLicenseNo,jdbcType=VARCHAR},
+            </if>
+            <if test="weixin != null">
+                weixin = #{weixin,jdbcType=VARCHAR},
+            </if>
+            <if test="pno != null">
+                pno = #{pno,jdbcType=INTEGER},
+            </if>
+            <if test="cno != null">
+                cno = #{cno,jdbcType=INTEGER},
+            </if>
+            <if test="dno != null">
+                dno = #{dno,jdbcType=INTEGER},
+            </if>
+            <if test="landlinePhone != null">
+                landline_phone = #{landlinePhone,jdbcType=VARCHAR},
+            </if>
+            <if test="memberNo != null">
+                member_no = #{memberNo,jdbcType=VARCHAR},
+            </if>
+            <if test="primaryCar != null">
+                primary_car = #{primaryCar,jdbcType=BIGINT},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="sumConsume != null">
+                sum_consume = #{sumConsume,jdbcType=DOUBLE},
+            </if>
+            <if test="sumCash != null">
+                sum_cash = #{sumCash,jdbcType=DOUBLE},
+            </if>
+            <if test="buyCardTime != null">
+                buy_card_time = #{buyCardTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginTime != null">
+                login_time = #{loginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="carNo != null">
+                car_no = #{carNo,jdbcType=VARCHAR},
+            </if>
+            <if test="insuranceDate != null">
+                insurance_date = #{insuranceDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="token != null">
+                token = #{token,jdbcType=VARCHAR},
+            </if>
+            <if test="header != null">
+                header = #{header,jdbcType=VARCHAR},
+            </if>
+            <if test="imLabel != null">
+                im_label = #{imLabel,jdbcType=VARCHAR},
+            </if>
+            <if test="randomCode != null">
+                random_code = #{randomCode,jdbcType=INTEGER},
+            </if>
+            <if test="oil != null">
+                oil = #{oil,jdbcType=DOUBLE},
+            </if>
+            <if test="qrCode != null">
+                qr_code = #{qrCode,jdbcType=CHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="platformPoint != null">
+                platform_point = #{platformPoint,jdbcType=DOUBLE},
+            </if>
+            <if test="selfRegister != null">
+                self_register = #{selfRegister,jdbcType=CHAR},
+            </if>
+            <if test="vehicleId != null">
+                vehicle_id = #{vehicleId,jdbcType=VARCHAR},
+            </if>
+            <if test="kilometers != null">
+                kilometers = #{kilometers,jdbcType=DOUBLE},
+            </if>
+            <if test="carModelId != null">
+                erp_car_model_id = #{carModelId,jdbcType=BIGINT},
+            </if>
+            <if test="carBrandId != null">
+                erp_car_brand_id = #{carBrandId,jdbcType=BIGINT},
+            </if>
+            <if test="carSeriesId != null">
+                erp_car_series_id = #{carSeriesId,jdbcType=BIGINT},
+            </if>
+            <if test="parentStoreId != null">
+                parent_store_id = #{parentStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="wxAppId != null">
+                wx_app_id = #{wxAppId,jdbcType=VARCHAR},
+            </if>
+            <if test="openId != null">
+                open_id = #{openId,jdbcType=VARCHAR},
+            </if>
+            <if test="unionOpenId != null">
+                union_open_id = #{unionOpenId,jdbcType=VARCHAR},
+            </if>
+            <if test="mallUserId != null">
+                mall_user_id = #{mallUserId,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectByCondition" parameterType="com.epoint.member.entity.MemberStoreInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from erp_member_store_info
+        <where>
+            <if test="id != null">
+                and id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="storeId != null">
+                and erp_store_id = #{storeId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+</mapper>

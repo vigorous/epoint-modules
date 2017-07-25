@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.goods.dao.EPGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.goods.entity.Goods">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="goods_no" jdbcType="VARCHAR" property="goodsNo" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="goods_short" jdbcType="VARCHAR" property="goodsShort" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="goods_code" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="is_parts" jdbcType="BIT" property="isParts" />
+    <result column="is_inside" jdbcType="BIT" property="isInside" />
+    <result column="erp_brand_id" jdbcType="BIGINT" property="brandId" />
+    <result column="erp_supplier_id" jdbcType="BIGINT" property="supplierId" />
+    <result column="erp_goods_category_id" jdbcType="BIGINT" property="goodsCategoryId" />
+    <result column="erp_store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="status" jdbcType="CHAR" property="status" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="flag" jdbcType="CHAR" property="flag" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_grounding" jdbcType="BIT" property="isGrounding" />
+    <result column="other_system_goods_id" jdbcType="VARCHAR" property="otherSystemGoodsId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="spell_short" jdbcType="VARCHAR" property="spellShort" />
+    <result column="goods_coding" jdbcType="VARCHAR" property="goodsCoding" />
+    <result column="is_temp_purchase" jdbcType="BIGINT" property="isTempPurchase" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, goods_no, model, goods_short, unit, goods_code, is_parts, is_inside, erp_brand_id, 
+    erp_supplier_id, erp_goods_category_id, erp_store_id, status, image, flag, update_time, 
+    remark, is_grounding, other_system_goods_id, create_time, spell_short, goods_coding, 
+    is_temp_purchase
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_goods
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_goods
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.goods.entity.Goods" useGeneratedKeys="true">
+    insert into erp_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="goodsNo != null">
+        goods_no,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="goodsShort != null">
+        goods_short,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="goodsCode != null">
+        goods_code,
+      </if>
+      <if test="isParts != null">
+        is_parts,
+      </if>
+      <if test="isInside != null">
+        is_inside,
+      </if>
+      <if test="brandId != null">
+        erp_brand_id,
+      </if>
+      <if test="supplierId != null">
+        erp_supplier_id,
+      </if>
+      <if test="goodsCategoryId != null">
+        erp_goods_category_id,
+      </if>
+      <if test="storeId != null">
+        erp_store_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="isGrounding != null">
+        is_grounding,
+      </if>
+      <if test="otherSystemGoodsId != null">
+        other_system_goods_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="spellShort != null">
+        spell_short,
+      </if>
+      <if test="goodsCoding != null">
+        goods_coding,
+      </if>
+      <if test="isTempPurchase != null">
+        is_temp_purchase,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNo != null">
+        #{goodsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsShort != null">
+        #{goodsShort,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isParts != null">
+        #{isParts,jdbcType=BIT},
+      </if>
+      <if test="isInside != null">
+        #{isInside,jdbcType=BIT},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsCategoryId != null">
+        #{goodsCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isGrounding != null">
+        #{isGrounding,jdbcType=BIT},
+      </if>
+      <if test="otherSystemGoodsId != null">
+        #{otherSystemGoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spellShort != null">
+        #{spellShort,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCoding != null">
+        #{goodsCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="isTempPurchase != null">
+        #{isTempPurchase,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.goods.entity.Goods">
+    update erp_goods
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNo != null">
+        goods_no = #{goodsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsShort != null">
+        goods_short = #{goodsShort,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCode != null">
+        goods_code = #{goodsCode,jdbcType=VARCHAR},
+      </if>
+      <if test="isParts != null">
+        is_parts = #{isParts,jdbcType=BIT},
+      </if>
+      <if test="isInside != null">
+        is_inside = #{isInside,jdbcType=BIT},
+      </if>
+      <if test="brandId != null">
+        erp_brand_id = #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="supplierId != null">
+        erp_supplier_id = #{supplierId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsCategoryId != null">
+        erp_goods_category_id = #{goodsCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        erp_store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=CHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isGrounding != null">
+        is_grounding = #{isGrounding,jdbcType=BIT},
+      </if>
+      <if test="otherSystemGoodsId != null">
+        other_system_goods_id = #{otherSystemGoodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spellShort != null">
+        spell_short = #{spellShort,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCoding != null">
+        goods_coding = #{goodsCoding,jdbcType=VARCHAR},
+      </if>
+      <if test="isTempPurchase != null">
+        is_temp_purchase = #{isTempPurchase,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

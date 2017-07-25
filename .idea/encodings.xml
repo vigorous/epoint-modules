@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-base" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-book" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-car" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-car-check" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-coupon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-flow" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-goods" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-member" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-message" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-reception" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-role" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-setting" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-staff" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-store" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/epoint-template-msg" charset="UTF-8" />
+  </component>
+</project>

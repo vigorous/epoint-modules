@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.coupon.dao.MemberCouponMapper">
+    <resultMap id="BaseResultMap" type="com.epoint.coupon.entity.MemberCoupon">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="member_id" jdbcType="BIGINT" property="memberId"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="wx_user_id" jdbcType="BIGINT" property="wxUserId"/>
+        <result column="wx_user_name" jdbcType="VARCHAR" property="wxUserName"/>
+        <result column="coupon_id" jdbcType="BIGINT" property="couponId"/>
+        <result column="coupon_name" jdbcType="VARCHAR" property="couponName"/>
+        <result column="coupon_store_id" jdbcType="BIGINT" property="couponStoreId"/>
+        <result column="receive_store_id" jdbcType="BIGINT" property="receiveStoreId"/>
+        <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime"/>
+        <result column="use_store_id" jdbcType="BIGINT" property="useStoreId"/>
+        <result column="use_time" jdbcType="TIMESTAMP" property="useTime"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="status" jdbcType="SMALLINT" property="status"/>
+        <result column="task_id" jdbcType="BIGINT" property="taskId"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="coupon_type" jdbcType="SMALLINT" property="couponType"/>
+        <result column="item_id" jdbcType="BIGINT" property="itemId" />
+        <result column="receive_type" jdbcType="SMALLINT" property="receiveType"/>
+        <result column="coupon_money" jdbcType="DOUBLE" property="couponMoney"/>
+        <result column="coupon_content" jdbcType="VARCHAR" property="couponContent"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, member_id, mobile, wx_user_id, wx_user_name, coupon_id, coupon_name, coupon_store_id,task_id,
+    receive_store_id, receive_time, use_store_id, use_time, start_time, end_time, status, receive_type,coupon_type,item_id,coupon_money,coupon_content,
+    create_time, update_time
+  </sql>
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from erp_coupon_member
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from erp_coupon_member
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.epoint.coupon.entity.MemberCoupon" useGeneratedKeys="true" keyColumn="id"
+            keyProperty="id">
+        insert into erp_coupon_member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="memberId != null">
+                member_id,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="wxUserId != null">
+                wx_user_id,
+            </if>
+            <if test="wxUserName != null">
+                wx_user_name,
+            </if>
+            <if test="couponId != null">
+                coupon_id,
+            </if>
+            <if test="couponName != null">
+                coupon_name,
+            </if>
+            <if test="couponStoreId != null">
+                coupon_store_id,
+            </if>
+            <if test="receiveStoreId != null">
+                receive_store_id,
+            </if>
+            <if test="receiveTime != null">
+                receive_time,
+            </if>
+            <if test="useStoreId != null">
+                use_store_id,
+            </if>
+            <if test="useTime != null">
+                use_time,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="taskId != null">
+                task_id,
+            </if>
+
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+
+            <if test="couponType != null">
+                coupon_type,
+            </if>
+            <if test="itemId != null">
+                item_id,
+            </if>
+            <if test="receiveType != null">
+                receive_type,
+            </if>
+            <if test="couponMoney != null">
+                coupon_money,
+            </if>
+            <if test="couponContent != null">
+                coupon_content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="memberId != null">
+                #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="mobile != null">
+                #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="wxUserId != null">
+                #{wxUserId,jdbcType=BIGINT},
+            </if>
+            <if test="wxUserName != null">
+                #{wxUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="couponId != null">
+                #{couponId,jdbcType=BIGINT},
+            </if>
+            <if test="couponName != null">
+                #{couponName,jdbcType=VARCHAR},
+            </if>
+            <if test="couponStoreId != null">
+                #{couponStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="receiveStoreId != null">
+                #{receiveStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="receiveTime != null">
+                #{receiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="useStoreId != null">
+                #{useStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="useTime != null">
+                #{useTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=SMALLINT},
+            </if>
+            <if test="taskId != null">
+                #{taskId,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="couponType != null">
+                #{couponType,jdbcType=SMALLINT},
+            </if>
+            <if test="itemId != null">
+                #{itemId},
+            </if>
+            <if test="receiveType != null">
+                #{receiveType,jdbcType=SMALLINT},
+            </if>
+            <if test="couponMoney != null">
+                #{couponMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="couponContent != null">
+                #{couponContent,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateById" parameterType="com.epoint.coupon.entity.MemberCoupon">
+        update erp_coupon_member
+        <set>
+            <if test="memberId != null">
+                member_id = #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="wxUserId != null">
+                wx_user_id = #{wxUserId,jdbcType=BIGINT},
+            </if>
+            <if test="wxUserName != null">
+                wx_user_name = #{wxUserName,jdbcType=VARCHAR},
+            </if>
+            <if test="couponId != null">
+                coupon_id = #{couponId,jdbcType=BIGINT},
+            </if>
+            <if test="couponName != null">
+                coupon_name = #{couponName,jdbcType=VARCHAR},
+            </if>
+            <if test="couponStoreId != null">
+                coupon_store_id = #{couponStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="receiveStoreId != null">
+                receive_store_id = #{receiveStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="receiveTime != null">
+                receive_time = #{receiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="useStoreId != null">
+                use_store_id = #{useStoreId,jdbcType=BIGINT},
+            </if>
+            <if test="useTime != null">
+                use_time = #{useTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=SMALLINT},
+            </if>
+            <if test="taskId != null">
+                task_id = #{taskId,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+
+            <if test="couponType != null">
+                coupon_type = #{couponType,jdbcType=SMALLINT},
+            </if>
+            <if test="receiveType != null">
+                receive_type = #{receiveType,jdbcType=SMALLINT},
+            </if>
+            <if test="couponMoney != null">
+                coupon_money = #{couponMoney,jdbcType=DOUBLE},
+            </if>
+            <if test="couponContent != null">
+                coupon_content = #{couponContent,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectMemberCoupon" parameterType="com.epoint.coupon.entity.MemberCoupon" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from erp_coupon_member
+        where
+        member_id = #{memberId,jdbcType=BIGINT}
+        <if test="status != null">
+            AND status = #{status,jdbcType=SMALLINT}
+        </if>
+        ORDER BY end_time ASC
+    </select>
+
+    <select id="selectMemberCouponByCouponId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from erp_coupon_member
+        where
+        coupon_id = #{couponId,jdbcType=BIGINT}
+        AND member_id = #{memberId,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectMemberCouponByMemberId" resultType="com.epoint.coupon.dto.MyCoupon">
+    select
+         a.id,
+         a.member_id AS memberId,
+         a.mobile ,
+         a.wx_user_id AS wxUserId,
+         a.wx_user_name AS wxUserName,
+         a.coupon_id AS couponId,
+         a.coupon_name AS couponName,
+         a.coupon_store_id AS couponStoreId,
+         a.task_id AS taskId,
+        a.receive_store_id AS receiveStoreId,
+        a.receive_time AS receiveTime,
+        a.use_store_id AS useStoreId,
+        a.use_time AS useTime,
+        a.start_time AS startTime,
+        a.end_time AS endTime,
+        a.status,
+        a.receive_type AS receiveType,
+        a.coupon_type AS couponType,
+        a.item_id AS itemId,
+        a.coupon_money AS couponMoney,
+        a.coupon_content AS couponContent,
+        a.create_time AS createTime,
+        a.update_time AS updateTime,
+        b.name AS storeName,
+        c.name AS receiveStoreName,
+        d.name AS useStoreName
+    from erp_coupon_member a
+         INNER JOIN erp_store b ON a.coupon_store_id = b.id
+         INNER JOIN  erp_store c ON  a.receive_store_id = c.id
+         LEFT JOIN  erp_store d ON  a.use_store_id = d.id
+    where
+      a.member_id = #{memberId,jdbcType=BIGINT}
+      AND a.coupon_store_id = #{storeId,jdbcType=BIGINT}
+  </select>
+    <select id="queryNumByPage" parameterType="map" resultType="Integer">
+        SELECT
+	    COUNT(*) from (
+            SELECT
+              COUNT(a.id)
+            FROM erp_coupon_member a
+            left join erp_member_store_info b on b.id = a.member_id
+            where a.receive_store_id = #{storeId}
+            <if test="start != null">
+                <![CDATA[ and date(a.receive_time) >= #{start}]]>
+            </if>
+            <if test="end != null">
+                <![CDATA[and date(a.receive_time) <= #{end}]]>
+            </if>
+            <if test="key!=null">
+                and (b.mobile like #{key} or b.name like #{key})
+            </if>
+            <if test="couponId != null">
+                and a.coupon_id = #{couponId}
+            </if>
+            GROUP BY a.member_id,a.coupon_id
+        )f
+    </select>
+
+    <select id="queryListByPage" parameterType="map" resultType="com.epoint.coupon.dto.MyCoupon">
+      select
+         a.id,
+         a.member_id as memberId,
+         b.mobile as mobile,
+         a.wx_user_id as wxUserId,
+         a.wx_user_name as wxUserName,
+         a.coupon_id as couponId,
+         a.coupon_name as couponName,
+         a.coupon_store_id as couponStoreId,
+         a.task_id as taskId,
+         a.receive_store_id as receiveStoreId,
+         a.receive_time as receiveTime,
+         a.use_store_id as useStoreId,
+         a.use_time as useTime,
+         a.start_time as startTime,
+         a.end_time as endTime,
+         GROUP_CONCAT(a.status) as couponStatus,
+         a.receive_type as receiveType,
+         a.coupon_type as couponType,
+         a.item_id AS itemId,
+         a.coupon_money as couponMoney,
+         a.coupon_content as couponContent,
+         a.create_time as createTime,
+         a.update_time as updateTime,
+         b.name as memberName,
+         IFNULL(COUNT(a.coupon_id),0) as amount,
+         c.name as receiveStoreName,
+         d.name as useStoreName,
+        GROUP_CONCAT(if(a.status = 2,a.use_time,null)) AS userTimes,
+        GROUP_CONCAT(if(a.status = 2,d.name,null)) AS userStoreNames,
+         LENGTH(GROUP_CONCAT(a.end_time &lt; now() and a.status in(0,1))) - LENGTH(REPLACE(GROUP_CONCAT(a.end_time &lt; NOW() and a.status in (0,1)),'1','')) as endTimeNum
+        from erp_coupon_member a
+        left join erp_member_store_info b on b.id = a.member_id
+       	LEFT OUTER JOIN erp_store c on c.id = a.receive_store_id
+		LEFT OUTER JOIN erp_store d on d.id = a.use_store_id
+        where a.receive_store_id = #{storeId}
+        <if test="start != null">
+            <![CDATA[and date(a.receive_time) >= #{start}]]>
+        </if>
+        <if test="end != null">
+            <![CDATA[and date(a.receive_time) <= #{end}]]>
+        </if>
+        <if test="key!=null">
+            and (b.mobile like #{key} or b.name like #{key})
+        </if>
+        <if test="couponId != null">
+            and a.coupon_id = #{couponId}
+        </if>
+        GROUP BY a.member_id,a.coupon_id
+        ORDER BY a.end_time DESC
+        limit #{pageNum},#{pageSize}
+    </select>
+
+    <select id="selectTotalReceiveNum" parameterType="map" resultType="java.lang.Integer">
+        select count(*)
+        from erp_coupon_member
+        where receive_store_id = #{storeId}
+          and coupon_id = #{couponId}
+    </select>
+
+    <select id="selectTotalUseNum" parameterType="map" resultType="java.lang.Integer">
+        select count(*)
+        from erp_coupon_member
+        where receive_store_id = #{storeId}
+          and coupon_id = #{couponId} and status in(1,2)
+    </select>
+
+
+</mapper>

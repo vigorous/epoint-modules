@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epoint.order.dao.EPOrderRemarkMapper">
+  <resultMap id="BaseResultMap" type="com.epoint.order.entity.OrderRemark">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="store_id" jdbcType="BIGINT" property="storeId" />
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="target_id" jdbcType="BIGINT" property="targetId" />
+    <result column="target_type" jdbcType="INTEGER" property="targetType" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="staff_id" jdbcType="BIGINT" property="staffId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="staff_ids" jdbcType="VARCHAR" property="staffIds" />
+    <result column="staff_names" jdbcType="VARCHAR" property="staffNames" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, store_id, order_id, order_no, target_id, target_type, score, member_id, staff_id, 
+    update_time, create_time, staff_ids, staff_names
+  </sql>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from erp_order_remark
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from erp_order_remark
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.epoint.order.entity.OrderRemark" useGeneratedKeys="true">
+    insert into erp_order_remark
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="targetId != null">
+        target_id,
+      </if>
+      <if test="targetType != null">
+        target_type,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="staffId != null">
+        staff_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="staffIds != null">
+        staff_ids,
+      </if>
+      <if test="staffNames != null">
+        staff_names,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="targetId != null">
+        #{targetId,jdbcType=BIGINT},
+      </if>
+      <if test="targetType != null">
+        #{targetType,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="staffId != null">
+        #{staffId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staffIds != null">
+        #{staffIds,jdbcType=VARCHAR},
+      </if>
+      <if test="staffNames != null">
+        #{staffNames,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.epoint.order.entity.OrderRemark">
+    update erp_order_remark
+    <set>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="targetId != null">
+        target_id = #{targetId,jdbcType=BIGINT},
+      </if>
+      <if test="targetType != null">
+        target_type = #{targetType,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="staffId != null">
+        staff_id = #{staffId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staffIds != null">
+        staff_ids = #{staffIds,jdbcType=VARCHAR},
+      </if>
+      <if test="staffNames != null">
+        staff_names = #{staffNames,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

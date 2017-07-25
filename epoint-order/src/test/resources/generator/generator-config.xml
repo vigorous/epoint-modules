@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <classPathEntry
+            location="/Users/xishengchun/.m2/repository/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar"/>
+
+    <context id="erp_order" targetRuntime="MyBatis3">
+
+        <plugin type="com.epoint.plugins.CommentPlugin"></plugin>
+        <!--<plugin type="com.epoint.plugins.ToStringCommentPlugin"></plugin>-->
+        <plugin type="com.epoint.plugins.IgnoreColumnPlugin"></plugin>
+        <plugin type="com.epoint.plugins.BaseMapperPlugin">
+            <property name="baseMapper" value="com.epoint.dao.BaseMapper"/>
+        </plugin>
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <!-- 在model注释中,显示字段备注 -->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://112.16.81.130:3306/erp_0517"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator
+                targetPackage="com.epoint.order.entity" targetProject="src/main/java">
+            <property name="rootClass" value="com.epoint.entity.BaseEntity"/>
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="false"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.epoint.order.dao" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.epoint.order.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <!--
+            <property name="rootInterface" value="com.epoint.dao.BaseMapper"/>
+            -->
+        </javaClientGenerator>
+
+        <table tableName="erp_work_order" domainObjectName="Order"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_work_order_item" domainObjectName="OrderItem"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_order_pay_item" domainObjectName="OrderPayItem"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_work_order_history" domainObjectName="OrderHistory"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_order_attachment" domainObjectName="OrderAttachment"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+        </table>
+
+        <table  tableName="erp_order_credit_discount" domainObjectName="OrderCreditDiscount"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_order_delay_repay" domainObjectName="OrderDelayRepay"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+        </table>
+
+        <table  tableName="erp_order_remark" domainObjectName="OrderRemark"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+        </table>
+
+        <table  tableName="erp_order_pre_pay_item" domainObjectName="OrderPrePayItem"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_insurance_order" domainObjectName="InsuranceOrder"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_insurance_company" domainObjectName="InsuranceCompany"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_insurance_company" domainObjectName="Insurance"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_refund_order" domainObjectName="RefundOrder"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_refund_order_item" domainObjectName="RefundOrderItem"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_refund_order_pay_item" domainObjectName="RefundOrderPayItem"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+        <table  tableName="erp_refund_order_pre_pay_item" domainObjectName="RefundOrderPrePayItem"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+
+        <table  tableName="erp_check_bill" domainObjectName="CheckBill"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+        </table>
+
+        <table  tableName="erp_check_bill_item" domainObjectName="CheckBillItem"
+               modelType="flat"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnRenamingRule searchString="^erp_" replaceString=""/>
+
+        </table>
+
+
+    </context>
+</generatorConfiguration>
